@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p v-for="tag in tags" :key="tag">#{{ tag }}</p>
+    <router-link v-for="tag in tags" :key="tag" :to="`/tag/#${tag}`">
+      <p>#&nbsp;{{ tag }}</p>
+    </router-link>
   </div>
 </template>
 
