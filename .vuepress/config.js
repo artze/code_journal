@@ -1,3 +1,6 @@
 module.exports = {
-  title: 'Code Journal'
+  title: 'Code Journal',
+  themeConfig: {
+    nav: [{ text: 'Tags', link: '/tags/' }]
+  }
 };

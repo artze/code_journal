@@ -16,7 +16,8 @@ module.exports = {
     "prettier/prettier": ["error", {
       "tabWidth": 2,
       "singleQuote": true,
-      "arrowParens": "always"
+      "arrowParens": "always",
+      "trailingComma": "none"
     }]
   }
 };
