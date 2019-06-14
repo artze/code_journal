@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 v-if="tagTitle">{{ tagTitle }}</h1>
     <router-link
       v-for="post in posts"
       :key="post.key"
@@ -18,7 +19,16 @@
 export default {
   computed: {
     posts() {
+      const tag = this.$route.hash ? this.$route.hash.slice(1) : null;
+      if (tag) {
+        return this.$site.pages
+          .filter((page) => /^\/posts\/./.test(page.path))
+          .filter((page) => page.frontmatter.tags.includes(tag));
+      }
       return this.$site.pages.filter((page) => /^\/posts\/./.test(page.path));
+    },
+    tagTitle() {
+      return this.$route.hash;
     }
   }
 };
