@@ -1,9 +1,11 @@
 <template>
   <div class="page-tags__container">
     Tags:
-    <div v-for="tag in tags" :key="tag" class="tag__badge">
-      {{ tag }}
-    </div>
+    <router-link v-for="tag in tags" :key="tag" :to="`/tag/#${tag}`">
+      <div class="tag__badge">
+        {{ tag }}
+      </div>
+    </router-link>
   </div>
 </template>
 
