@@ -1,6 +1,7 @@
 ---
 title: First Post
 description: This is first post
+tags: ['nodejs', 'streams']
 ---
 # First Post
 ## asdfasf
@@ -69,3 +70,5 @@ concatFiles(process.argv[2], process.argv.slice(3), () => {
 //     (`through`) - which is the default behaviour of
 //     `pipe()`.
 ```
+
+<PageTags />

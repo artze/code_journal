@@ -20,9 +20,6 @@ export default {
     posts() {
       return this.$site.pages.filter((page) => /^\/posts\/./.test(page.path));
     }
-  },
-  mounted() {
-    console.log(this.posts);
   }
 };
 </script>
