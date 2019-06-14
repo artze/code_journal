@@ -1,0 +1,14 @@
+{
+  "name": "code_journal",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artze/code_journal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/artze/code_journal/issues"
+  },
+  "homepage": "https://github.com/artze/code_journal#readme"
+}
