@@ -1,1 +1,1 @@
-# Code Journal
+<PostList page="posts" />
