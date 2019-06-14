@@ -1,4 +1,3 @@
 module.exports = {
-    title: 'Code Journal',
-    description: 'A description'
+    title: 'Code Journal'
 }

@@ -1,8 +1,1 @@
----
-home: false
----
-# Landing Page Title
-
-## asaf
-
-## werwe
+<PostList page="posts" />
