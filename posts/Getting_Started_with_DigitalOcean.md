@@ -5,7 +5,7 @@ tags: ['digitalocean', 'server setup']
 timestamp: 1537498800000
 ---
 
-# Getting Started with DigitalOcean
+## Getting Started with DigitalOcean
 
 * Setting up SSH and firewall:
 
