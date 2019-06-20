@@ -23,9 +23,12 @@ export default {
       if (tag) {
         return this.$site.pages
           .filter((page) => /^\/posts\/./.test(page.path))
-          .filter((page) => page.frontmatter.tags.includes(tag));
+          .filter((page) => page.frontmatter.tags.includes(tag))
+          .sort((a, b) => b.frontmatter.timestamp - a.frontmatter.timestamp);
       }
-      return this.$site.pages.filter((page) => /^\/posts\/./.test(page.path));
+      return this.$site.pages
+        .filter((page) => /^\/posts\/./.test(page.path))
+        .sort((a, b) => b.frontmatter.timestamp - a.frontmatter.timestamp);
     },
     tagTitle() {
       return this.$route.hash;
