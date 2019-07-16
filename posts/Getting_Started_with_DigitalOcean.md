@@ -27,5 +27,9 @@ timestamp: 1537498800000
 
 <https://www.digitalocean.com/community/tutorials/how-to-set-up-let-s-encrypt-with-nginx-server-blocks-on-ubuntu-16-04>
 
+* Creating Subdomains:
+
+<https://www.digitalocean.com/community/questions/how-to-create-subdomain-for-my-blog-on-digital-ocean>
+
 <PostDate />
 <PageTags />
