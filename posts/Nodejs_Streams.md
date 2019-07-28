@@ -148,9 +148,9 @@ Side note:
 * The distinction is made to distinguish between the two in cases of duplex streams.
 
 #### Backpressure
-* Streams can suffer from bottlenecks where data is written at a faster rate than it is consumed.
+* Streams can suffer from bottlenecks when data is written to *streams* at a faster rate than it is consumed (e.g. saving data to filesystem).
 * The mechanism to deal with this problem is to buffer incoming data, but without controlling the writer, data stored in internal buffer will accumulate, leading to undesirable memory usage
-* `writable.write(` returns `false` when the internal buffer exceeds `highWaterMark` limit, indicating that the writing operation should be put on pause. When the buffer is emptied, the drain event is emitted, communicating that it’s safe to resume writing. This mechanism is called **back-pressure**.
+* `writable.write()` returns `false` when the internal buffer exceeds `highWaterMark` limit, indicating that the writing operation should be put on pause. When the buffer is *emptied*, the drain event is emitted, communicating that it’s safe to resume writing. This mechanism is called **back-pressure**.
 
 ```js
 const Chance = require('chance');
@@ -161,20 +161,20 @@ http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   
   const generateMore = () => {
-  while(chance.bool({ likelihood: 95 })) {
-    let shouldContinue = res.write(
-    chance.string({ length: (16 * 1024) - 1 })
-    );
+    while(chance.bool({ likelihood: 95 })) {
+      let shouldContinue = res.write(
+        chance.string({ length: (16 * 1024) - 1 })
+      );
 
-    if(!shouldContinue) {                          // [1]
-    console.log('backpressure');
-    return res.once('drain', generateMore);
+      if(!shouldContinue) {                          // [1]
+        console.log('backpressure');
+        return res.once('drain', generateMore);
+      }
     }
-  }
 
-  res.end('\n The end... \n', () => {              // [2]
-    console.log('All data was sent')
-  })
+    res.end('\n The end... \n', () => {              // [2]
+      console.log('All data was sent')
+    })
   }
 
   generateMore();
@@ -248,10 +248,12 @@ tfs.end(() => {
 
 ### Duplex Streams
 * Is both Readable and Writable
+* Duplex streams are readable/writable and both ends of the stream engage in a two-way interaction, sending back and forth messages like a telephone
 * When creating custom Duplex streams, implementations for both `_read()` and `_write()` required. The `options` object passed to custom Duplex streams constructor are the same as Readable/Writable streams, with the addition of `allowHalfOpen` parameter: setting it to `false` will cause *both* Readable and Writable streams to end when one of them does (defaults to `true`)
 
 ### Transform Streams
 * Has both Readable and Writable interfaces
+* Unlike Duplex streams, it has only a Writable stream on one end, and a Readable stream on the other.
 * Allows us to write into the stream. Within the stream, some processing can be done before being output as a Readable stream.
 
 Its custom implementation requires 2 methods:
