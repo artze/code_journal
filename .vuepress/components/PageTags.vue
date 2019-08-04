@@ -32,6 +32,6 @@ export default {
   font-size: 0.9em;
   font-weight: 300;
   margin: 0 0.5em;
-  padding: 0.3em;
+  padding: 0.3em 0.5em;
 }
 </style>
