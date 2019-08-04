@@ -1,6 +1,6 @@
 ---
 title: Data Access Object and Lazy Loading Pattern
-description: 
+description: Construct a Data Access Object with Lazy Loading of relational data
 tags: ['design pattern']
 timestamp: 1564890718325
 ---
