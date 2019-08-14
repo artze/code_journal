@@ -3,5 +3,12 @@ module.exports = {
   themeConfig: {
     nav: [{ text: 'Tags', link: '/tags/' }]
   },
-  ga: 'UA-106933848-3'
+  plugins: [
+    [
+      '@vuepress/google-analytics',
+      {
+        ga: ' UA-106933848-3'
+      }
+    ]
+  ]
 };
