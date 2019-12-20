@@ -16,6 +16,7 @@ Defining custom Object types
 * @property {number} field1
 * @property {string} field2
 * @property {string} [optionalField3]
+* @property {function(string, boolean): number} aMethod - a method that takes string and boolean as parameters and returns a number
 */
 ```
 
