@@ -12,7 +12,8 @@
   },
   "homepage": "https://github.com/artze/code_journal#readme",
   "scripts": {
-    "dev": "vuepress dev journal"
+    "dev": "vuepress dev journal",
+    "build": "vuepress build journal"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
