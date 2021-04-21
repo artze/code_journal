@@ -15,4 +15,4 @@ timestamp: `date +%s%N | cut -b1-13`
 <PageTags />
 EOF
 
-subl ./posts/$1.md
+subl ./journal/posts/$1.md
