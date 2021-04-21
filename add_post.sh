@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat << EOF > ./posts/$1.md
+cat << EOF > ./journal/posts/$1.md
 ---
 title: `echo "$1" | sed "s/_/ /g"`
 description: 
