@@ -62,7 +62,7 @@ main "$@"
 # loop is printed 2 times, proof that there are a total of 2 args
 ```
 
-When `$@` is wrapped in double-quotes, the space in "john smith" is preserved; otherwise, the *all* spaces will serve as delimeter between arguments.
+When `$@` is wrapped in double-quotes, the space in "john smith" is preserved; otherwise, *all* spaces will serve as delimeter between arguments.
 
 <PostDate />
 <PageTags />
