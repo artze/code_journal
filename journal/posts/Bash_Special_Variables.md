@@ -25,8 +25,44 @@ main $@
 # When we run `./script.sh foo bar`:
 # $1 is foo
 # $2 is bar
-# loop is printed 2 times
+# loop is printed 2 times, proof that there are a total of 2 args
 ```
+
+### How Multi-word Arguments are Handled
+
+```bash
+main () {
+  echo "\$1 is $1"
+  echo "\$2 is $2"
+  for el in $@
+  do 
+    echo "loop"
+  done
+}
+
+main $@
+
+# When we run `./script.sh "john smith" "anna nicole"`:
+# $1 is john
+# $2 is smith
+# loop is printed 4 times, proof that there are a total of 4 args
+```
+
+```bash
+main () {
+  echo "\$1 is $1"
+  echo "\$2 is $2"
+}
+
+main "$@"
+
+# When we run `./script.sh "john smith" "anna nicole"`:
+# $1 is john smith
+# $2 is anna nicole
+# loop is printed 2 times, proof that there are a total of 2 args
+```
+
+When `$@` is wrapped in double-quotes, the space in "john smith" is preserved; otherwise, the *all* spaces will serve as delimeter between arguments.
 
 <PostDate />
 <PageTags />
