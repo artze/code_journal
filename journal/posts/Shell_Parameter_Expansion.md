@@ -1,6 +1,6 @@
 ---
 title: Shell Parameter Expansion
-description: 
+description: A list of shell parameter expansion features
 tags: ['bash']
 timestamp: 1619340474849
 ---
