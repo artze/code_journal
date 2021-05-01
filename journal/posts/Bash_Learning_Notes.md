@@ -113,7 +113,27 @@ Can also be achieved with either `++i` or `i++`:
 - `++i` increments the variable and *returns the new value*
 - `i++` increments the variable and *returns the previous value*
 
-Decrement by using the `-` operator.
+Decrement by using the `-` operator.\
+
+## Ternery Expression
+
+```bash
+[ $sum -eq $1 ] && echo "true" || echo "false"
+```
+
+## Comparison Operators
+
+### String Comparison
+Both `=` and `==` can be used in Bash for string comparison. However, only `=` is POSIX compliant and guaranteed to work in all sh. `==` is Bash specific.
+
+### Numerical Comparison
+`-eq` must be used for numerical comparisons. Other comparison operators:
+- `-ne`
+- `-lt`
+- `-le`
+- `-gt`
+- `-ge`
+
 
 <PostDate />
 <PageTags />
