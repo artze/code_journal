@@ -9,7 +9,9 @@ timestamp: 1619340474849
 
 The most basic form of parameter expansion is `${parameter}` where the value of the `parameter` is substituted in place.
 
-There are operators that can be used with shell parameter expansion that offers certain features:
+There are operators that can be used with shell parameter expansion that offers certain features.
+
+## Expansion Based on Parameter Value
 
 ```bash
 ${parameter:-word}
@@ -37,16 +39,34 @@ ${parameter:+word}
 ```
 This is the opposite of `${parameter:-word}`. If parameter is null or unset, nothing is substituted, otherwise the expansion of word is substituted. 
 
-+++
+## Substring Operations
 
 ```bash
 ${parameter:offset}
 ${parameter:offset:length}
 ```
-
 These are substring operations:
 - `offset` is a zero-based index. Outputs substring from `offset` index onwards (inclusive) up to the end of string.
 - `length` is the desired length of substring. Outputs substring from `offset` index onwards up to the given `length`.
+
+## String Replace
+
+```bash
+${parameter/pattern/string}
+```
+Replaces `pattern` (regex) in parameter with string. This replaces only the first occurrence of `pattern`. 
+
+```bash
+${parameter//pattern/string}
+```
+Add a slash to pattern to replace *all* occurrences of `pattern`
+
+Example:
+```bash
+${1//[-_*]/ }
+```
+Replaces all occurrences of either `-`, `_` or `*` with a space
+
 
 More can be found [here](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
 
