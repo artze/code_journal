@@ -78,5 +78,42 @@ VAR1+=" World"
 echo "$VAR1"
 ```
 
+## Change String Case
+| Operator | Description |
+| --- | --- |
+| ^ | Convert first char to uppercase |
+| ^^ | Convert all chars to uppercase |
+| , | Convert first char to lowercase |
+| ,, | Convert all chars to lowercase |
+
+```bash
+str1="foo bar"
+${str1^} # Foo bar
+${str1^^} # FOO BAR
+
+str2="FOO BAR"
+${str2,} # fOO BAR
+${str2,,} # foo bar
+```
+
+It is possible to target specific letters to change its case:
+
+```bash
+languages="perl python java php"
+${languages^p} # Perl python java php
+${languages^^p} # Perl Python java Php
+${languages^^[p,j]} # Perl Python Java Php
+```
+
+## Increment / Decrement Variables
+
+With `i+=1` similar to other languages.
+
+Can also be achieved with either `++i` or `i++`:
+- `++i` increments the variable and *returns the new value*
+- `i++` increments the variable and *returns the previous value*
+
+Decrement by using the `-` operator.
+
 <PostDate />
 <PageTags />

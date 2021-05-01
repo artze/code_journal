@@ -50,6 +50,7 @@ These are substring operations:
 - `length` is the desired length of substring. Outputs substring from `offset` index onwards up to the given `length`.
 
 ## String Replace
+The string replace operations *do not* mutate the parameter.
 
 ```bash
 ${parameter/pattern/string}
