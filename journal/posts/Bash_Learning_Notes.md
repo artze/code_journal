@@ -7,6 +7,8 @@ timestamp: 1619259610710
 
 # Bash Learning Notes
 
+[[toc]]
+
 ## Basename
 
 ```bash
@@ -133,6 +135,38 @@ Both `=` and `==` can be used in Bash for string comparison. However, only `=` i
 - `-le`
 - `-gt`
 - `-ge`
+
+## Filter, Dedup, and Sort Strings
+
+```bash
+result=$(echo "${input//[_0-9 \\\".]/}" | grep -o . | sort -u | tr -d "\n")
+```
+
+Let's unpack what's going on here. 
+
+`${input//[_0-9 \\\".]/}` filters out the chars `_`, ` ` (space), `numbers`, `.`, `\` and `"` by replacing them with nothing. See [here](./Shell_Parameter_Expansion.md#string-replace).
+
++++
+
+`grep -o <pattern>`. The `-o` or `--only-matching` option outputs *only* the matching parts (everything else in the same line is discarded), with each match on a newline. 
+
+::: tip
+Remember that plain old `grep <pattern>` will *highlight* the matching parts, but still outputs the *entire* corresponding lines.
+:::
+
+The `.` in `grep -o .` means that all characters are a matching pattern. This essentially separates each input character into a newline.
+
++++
+
+The `sort` command typically sorts *lines* in a file, which is why we needed to split each input character into a newline. The `-u` option removes duplicates.
+
+More info on `sort` command [here](https://www.geeksforgeeks.org/sort-command-linuxunix-examples/)
+
++++
+
+The `tr` command is an abbreviation of translate. The `-d` or `--delete` option simply deletes the character specified in the following argument. So `tr -d "\n"` removes the newlines, and brings us back to a one-liner string with the result.
+
+More on `tr` [here](https://linuxize.com/post/linux-tr-command/)
 
 
 <PostDate />
