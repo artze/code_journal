@@ -8,6 +8,9 @@ timestamp: 1619850952418
 # Bash Double Bracket Test
 The `[` command can be used in shell scripts to test an expression. In Bash, this can be done with `[[` as well, which offers more features. However `[[` is not POSIX compliant and does not work in many shell implementations.
 
+Resources: 
+- <https://dev.to/banks/stop-ignoring-errors-in-bash-3co5>
+
 ## Word Splitting and Glob Expansion
 The `[` command requires that you wrap your multi-word string variables with quotes. Without quotes, the variable will be subject to word splitting. With `[[`, word-splitting will not be performed, even without quotes.
 
@@ -86,9 +89,6 @@ Conditional evaluation (AND, OR) works differently for `[` vs. `[[` tests. The f
 
 # returns true if answer is either 'y' or 'yes'
 ```
-
-## More Info
-A more detailed guide can be found [here](http://mywiki.wooledge.org/BashFAQ/031)
 
 <PostDate />
 <PageTags />

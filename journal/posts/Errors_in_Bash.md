@@ -1,17 +1,20 @@
 ---
-title: Errors in Bash
+title: Errors in Shell Scripts
 description: Throwing errors and error handling
-tags: ['bash']
+tags: ['bash', 'shell script']
 timestamp: 1619395361533
 ---
 
-# Errors in Bash
+# Errors in Shell Scripts
 
-Errors or failures in Bash are represented by a non-zero exit code between `1` and `255`. In most cases, exit code `1` can be used.
+Errors or failures in shell are represented by a non-zero exit code between `1` and `255`. In most cases, exit code `1` can be used.
+
+Resources:
+- <https://dev.to/banks/stop-ignoring-errors-in-bash-3co5>
 
 ## Default Error Behaviors
 
-By default, Bash scripts will keep on running when encountered with an error (instead of terminating). See below:
+By default, shell scripts will keep on running when encountered with an error (instead of terminating). See below:
 
 ```bash
 main () {
@@ -45,7 +48,7 @@ main
 
 ## Terminate on Error
 
-At the most basic level, we can get Bash scripts to terminate when a subcommand errored, and propagate the exit code to the calling function. This can be done by adding `set -e` in our script.
+At the most basic level, we can get shell scripts to terminate when a subcommand errored, and propagate the exit code to the calling function. This can be done by adding `set -e` in our script.
 
 ```bash
 set -e
@@ -69,7 +72,7 @@ set -euo pipefail
 
 ### `set -u`
 
-This causes the Bash script to treat unset variables as an error *and* exit immediately. See cases below:
+This causes the shell script to treat unset variables as an error *and* exit immediately. See cases below:
 
 ```bash
 main () {
@@ -110,7 +113,8 @@ By default, the exit status of the entire pipeline will just be that of the last
 
 
 ## Error Handling
-To be completed
+<https://stackoverflow.com/questions/64786/error-handling-in-bash>
+<https://stackoverflow.com/questions/30078281/raise-error-in-a-bash-script/50265513#50265513>
 
 <PostDate />
 <PageTags />
