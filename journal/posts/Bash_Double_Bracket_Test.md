@@ -64,18 +64,18 @@ Conditional evaluation (AND, OR) works differently for `[` vs. `[[` tests. The f
 
 ```bash
 # AND evaluation
-[ $var1=a -a $var=b ] && echo "true"
+[ $var1 = a -a $var2 = b ] && echo "true"
 
 [ $var1 = a ] && [ $var2=b ] && echo "true"
 
-[[ $var1=a && $var=b ]] && echo "true"
+[[ $var1 = a && $var = b ]] && echo "true"
 
 # OR evaluation
-[ $var1=a -o $var=b ] && echo "true"
+[ $var1 = a -o $var2 = b ] && echo "true"
 
-[ $var1 = a ] || [ $var2=b ] && echo "true"
+[ $var1 = a ] || [ $var2 = b ] && echo "true"
 
-[[ $var1=a || $var=b ]] && echo "true"
+[[ $var1 = a || $var2 = b ]] && echo "true"
 ```
 
 `&&` and `||` does not work within a *single* test expression for `[` tests. They either need to be split or replaced with `-a`, `-o` operators.
