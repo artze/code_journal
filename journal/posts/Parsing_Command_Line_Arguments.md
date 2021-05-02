@@ -1,7 +1,7 @@
 ---
 title: Parsing Command Line Arguments
 description: Parse command line arguments in shell script
-tags: ['shell script']
+tags: ['shell']
 timestamp: 1570080424118
 ---
 

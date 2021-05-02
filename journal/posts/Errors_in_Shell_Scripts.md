@@ -1,7 +1,7 @@
 ---
 title: Errors in Shell Scripts
 description: Throwing errors and error handling
-tags: ['bash', 'shell script']
+tags: ['bash', 'shell']
 timestamp: 1619395361533
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Shell Script to Auto-deploy with Git Hook
 description: Shell script to run npm commands and auto-deploy with Git Hook
-tags: ['server setup', 'shell script']
+tags: ['server setup', 'shell']
 timestamp: 1537510932000
 ---
 

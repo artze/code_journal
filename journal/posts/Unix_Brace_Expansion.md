@@ -1,7 +1,7 @@
 ---
 title: Unix Brace Expansion
 description: Brace Expansion and shorthand for making backup files
-tags: ['shell script']
+tags: ['shell']
 timestamp: 1537687281000
 ---
 

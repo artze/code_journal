@@ -1,7 +1,7 @@
 ---
 title: Shell Globbing
 description: Globbing syntax
-tags: ['bash', 'shell script']
+tags: ['bash', 'shell']
 timestamp: 1619941556950
 ---
 
