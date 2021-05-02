@@ -183,5 +183,35 @@ See list of Character Classes [here](https://en.wikibooks.org/wiki/Regular_Expre
 # Tests if $1 contains only one or more [:space] characters
 ```
 
+## Hashmaps in Bash
+Hashmaps in Bash can be achieved by using an associative array.
+
+```bash
+# Declare associative array
+declare -A hashmap
+
+# Set key-value pairs
+hashmap[foo]="bar"
+hashmap[abc]="def"
+
+# Get value
+echo ${hashmap[foo]} # outputs 'bar'
+
+# Iterate keys in hashamp
+for key in ${!hashmap[@]}
+do
+  echo $key
+done
+
+# Iterate values in hashmap
+for value in ${hashmap[@]}
+do
+  echo $value
+done
+
+# Get number of elements
+echo ${#hashmap[@]} # outputs 2
+```
+
 <PostDate />
 <PageTags />
