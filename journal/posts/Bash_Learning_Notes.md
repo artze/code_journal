@@ -213,5 +213,45 @@ done
 echo ${#hashmap[@]} # outputs 2
 ```
 
+## Case Statements
+```bash
+# Syntax
+case expression in
+  pattern_1)
+    # do something
+    ;;
+  pattern_2)
+    # do something
+    ;;
+  *)
+    # do something
+    ;; 
+esac
+
+
+# Example
+case $1 in
+  foo)
+    # If $1="foo"
+    echo "foo triggered"
+    ;;
+  *"?"*)
+    # Pattern Matching. If $1 contains "?"
+    echo "? triggered"
+    ;;
+  ${1^^})
+    # Parameter expansion can be used. If $1 are ALL CAPS
+    echo "All caps triggered"
+    ;;
+  [ABCDE])
+    # Glob works. If $1 contains any one candidate from "ABCDE"
+    echo "Glob triggered"
+    ;;
+  *)
+    echo "Default case triggered"
+    ;;
+esac
+```
+
 <PostDate />
 <PageTags />
