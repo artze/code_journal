@@ -168,6 +168,20 @@ The `tr` command is an abbreviation of translate. The `-d` or `--delete` option 
 
 More on `tr` [here](https://linuxize.com/post/linux-tr-command/)
 
+## Capture Whitespace Characters with Regex
+The `=~` regex matcher operator in Bash supports 'extended regular expressions' which means it supports Character Classes notation like below:
+
+- `[[:blank:]]` means space and tab. This makes it similar to: [ \t].
+
+- `[[:space:]]`, in addition to space and tab, includes newline, linefeed, formfeed, and vertical tab. This makes it similar to: [ \t\n\r\f\v].
+
+See list of Character Classes [here](https://en.wikibooks.org/wiki/Regular_Expressions/POSIX-Extended_Regular_Expressions#Character_classes)
+
+```bash
+[[ $1 =~ ^[[:space:]]+$ ]] && echo "true"
+
+# Tests if $1 contains only one or more [:space] characters
+```
 
 <PostDate />
 <PageTags />
