@@ -90,5 +90,16 @@ Conditional evaluation (AND, OR) works differently for `[` vs. `[[` tests. The f
 # returns true if answer is either 'y' or 'yes'
 ```
 
+## Pattern Matching
+Pattern matching only works in `[[` tests, and not available in `[`. This is achieved with the use of `*` wildcard character
+
+```bash
+input="abcdfoobarefgh"
+
+[[ $input = *"foobar"* ]] && echo "true" # This is equivalent to string contains check
+
+[[ $input = "abcd"* ]] && echo "true" # Checks if string is prefixed with 'abcd'
+```
+
 <PostDate />
 <PageTags />
