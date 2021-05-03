@@ -253,5 +253,48 @@ case $1 in
 esac
 ```
 
+## Handling Exponents and Large Numbers
+In Bash, we can get results of exponentiation by
+```bash
+echo $(( 2 ** 5 )) # Equivalent to 2^5
+
+# Outputs 32
+```
+
+But if the resulting number is too large, (when it is larger than `2^63 - 1`), it will not be handled correctly. See more [here](https://stackoverflow.com/a/23044929/5204647). You will instead require a calculator program such as `bc`
+```bash
+echo $(echo "2 ^ 80" | bc)
+
+# Outputs 1208925819614629174706176
+```
+
++++
+
+Other examples of large number scenarios:
+
+```bash
+sum=0
+for i in {1..64}
+do
+  exp_product=$(echo "2 ^ $(( $i - 1 ))" | bc)
+  (( sum+=$exp_product ))
+done
+echo $sum 
+
+# outputs -1
+# The correct value should be 18446744073709551615
+```
+
+This can be resolved with `bc`
+```bash
+    sum=0
+    for i in {1..64}
+    do
+      exp_product=$(echo "2 ^ $(( $i - 1 ))" | bc)
+      sum=$(echo "$sum + $exp_product" | bc)
+    done
+    echo $sum
+```
+
 <PostDate />
 <PageTags />
