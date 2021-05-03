@@ -1,6 +1,6 @@
 ---
-title: Executable Global NPM Module
-description: How to create an NPM module
+title: Creating Executable Global NPM Module
+description: How to create a Global NPM module
 tags: ['npm']
 timestamp: 1619960627499
 ---
