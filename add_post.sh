@@ -1,8 +1,8 @@
 #!/bin/sh
 
-cat << EOF > ./journal/posts/$1.md
+cat << EOF > ./journal/posts/$2.md
 ---
-title: `echo "$1" | sed "s/_/ /g"`
+title: `echo "$2" | sed "s/_/ /g"`
 description: 
 tags: []
 timestamp: `date +%s%N | cut -b1-13`
@@ -15,4 +15,6 @@ timestamp: `date +%s%N | cut -b1-13`
 <PageTags />
 EOF
 
-subl ./journal/posts/$1.md
+if [ "$1" = "-o" ]; then
+  subl ./journal/posts/$2.md
+fi
