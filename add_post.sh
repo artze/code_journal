@@ -1,8 +1,15 @@
 #!/bin/sh
 
-cat << EOF > ./journal/posts/$2.md
+filename=""
+if [ "$1" = "-o" ]; then
+  filename=$2
+else
+  filename=$1
+fi
+
+cat << EOF > ./journal/posts/${filename}.md
 ---
-title: `echo "$2" | sed "s/_/ /g"`
+title: `echo ${filename} | sed "s/_/ /g"`
 description: 
 tags: []
 timestamp: `date +%s%N | cut -b1-13`
