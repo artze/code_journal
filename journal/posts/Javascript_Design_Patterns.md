@@ -5,9 +5,10 @@ tags: ['design pattern', 'javascript']
 timestamp: 1562901663426
 ---
 
-## Javascript Design Patterns
+# Javascript Design Patterns
+[[toc]]
 
-### Factory Pattern
+## Factory Pattern
 * Allows us to separate the object creation logic from its implementation. Consumer of factory is totally agnostic about how the instace is created.
 * Factory allows us to keep constructors (or classes) of objects private, and prevents them from being extended or modified - thus adhering to the concept of *small surface area*
 * The following example gives us better:
@@ -28,7 +29,7 @@ function createImage(name) {
 }
 ```
 
-#### Enforcing Encapsulation
+### Enforcing Encapsulation
 Encapsulation refers to the technique of controlling access to some internal details of an object by preventing external code from manipulating them directly (i.e. making *private* variables in OOP jargon). The interaction with these details happens only through its public interface. 
 
 As we can't declare *private* variables in JavaScript, we could implement encapsulation through function scopes and closures:
@@ -60,7 +61,7 @@ In the example above:
 
 An alternate approach in creating private variables recommended by Douglas Crockford: <http://crockford.com/javascript/private.html>
 
-#### Example Use Case
+### Example Use Case
 In this example we will create a simple code profiler that returns the execution time of code execution. It has two methods:
 * `start()` method that triggers the start of profiling session
 * `end()` method that termintates the session and log its execution time to the console
@@ -120,7 +121,7 @@ function getRandomArray(len) {
 getRandomArray(1e6);
 ```
 
-#### Composable Factory Functions
+### Composable Factory Functions
 A Composable Factory Function is a type of factory function that can be composed together to build new enhanced factory functions. They allow us to construct objects that inherit behaviours from different sources without the need of building complex hierarchies.
 
 This can be illustrated with an example. Say we want to build a game in which it has multiple characters, each of which has different behaviours. The behaviours include:
@@ -226,7 +227,7 @@ yojimbo.shoot('right');
 ```
 
 
-### Revealing Constructor Pattern
+## Revealing Constructor Pattern
 This pattern can be seen in the design of Promises:
 
 ```js
@@ -241,7 +242,7 @@ In summary, this pattern involves:
 * Passing a function as a *constructor argument* that will be called within the internal implementation of the constructor class
 * Exposing internal methods to the constructing code (e.g. `resolve` and `reject`). This is possible because during invocation of the executor function, the appropriate internal methods are passed in.
 
-#### Example Use Case
+### Example Use Case
 In this rather contrived example, we will try to create a read-only event emitter that is only able to emit events within the constructing code. 
 
 ```js
@@ -284,7 +285,7 @@ In the example:
 * An internal function `emit` is exposed to the constructing code
 
 
-### Proxy Pattern
+## Proxy Pattern
 A proxy is an object that controls access to another object, called a **subject**. The proxy and the subject have identical interfaces, which allows us to swap one for the other. A proxy intercepts all or some of the operations that are meant to be executed on the subject, thus augmenting their behaviour.
 
 A proxy is useful for:
@@ -297,7 +298,7 @@ A proxy is useful for:
 
 It is important to note that in this case, we are *not* proxying between classes. The proxy pattern involves wrapping actual *instances* of the subject, thus preserving its state.
 
-#### Implementing Proxies with Object Composition
+### Implementing Proxies with Object Composition
 Composition is a technique whereby an object is combined with another object for the purpose of extending or using its functionality. In this case, a new object (proxy) with the same interface as the subject is created. 
 
 The following example shows a factory that creates a proxy:
@@ -360,7 +361,7 @@ function createProxy(subject) {
 
 Modifying the subject directly may present some undesirable behaviours as further calls to `subject.hello()` (directly without proxying) would return the newly augmented behaviour.
 
-#### Example Use Case
+### Example Use Case
 In this example use case, we will create a proxy to a Writable stream that intercepts all calls to `write()` and logging a message every time this happens. 
 
 ```js
@@ -416,13 +417,13 @@ writable.write('This is not logged');
 writableProxy.end();
 ```
 
-#### Other Forms of Proxying
+### Other Forms of Proxying
 The proxying pattern can also be referred to as **function hooking** or **Aspect Oriented Programming (AOC)**. In these cases, such implementations involving the setting of *pre-* and *post-* execution hooks for a specific methods. There are some libraries that could help facilitate this:
 * `hooks`
 * `hooker`
 * `meld`
 
-#### ES2015 Proxy
+### ES2015 Proxy
 ES2015 introduced a global object called Proxy. The Proxy API contains a `Proxy` constructor and accepts a `target` and `handler` as arguments.
 
 ```js
@@ -466,10 +467,10 @@ In the code above, we create a *virtual* array with no data within. By using tra
 The Proxy API supports a number of other trap methods and can be found here: <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy>
 
 
-### Decorator Pattern
+## Decorator Pattern
 The Decorator Pattern is similar to the Proxy Pattern, but instaed of modifying *existing* interfaces of an object, it augments the subject by adding *new* functionalities.
 
-#### Implementing Decorator with Object Composition
+### Implementing Decorator with Object Composition
 The implementation is almost identical to Proxy with Object Composition, only that we are adding new methods rather than proxying existing methods:
 
 ```js
@@ -496,7 +497,7 @@ function decorate(component) {
 }
 ```
 
-#### Implementing Decorator with Object Augmentation
+### Implementing Decorator with Object Augmentation
 
 ```js
 function decorate(component) {
@@ -509,7 +510,7 @@ function decorate(component) {
 }
 ```
 
-#### Example Use Case
+### Example Use Case
 We will create a plugin for LevelUP database module using the Decorator Pattern, with the Object Augmentation technique. The plugin will have the feature of notifying us whenever an object with a user-specified pattern gets inserted into the database. For example if we specify a pattern `{a: 1}`, we will receive a notification when objects such as `{a: 1, b: 44}` or `{a: 1, c: 'x'}` are inserted into database.
 
 ```js
@@ -553,10 +554,10 @@ db.put('2', { doctype: 'company', lang: 'it', name: 'ACME Co.' });    // does no
 ```
 
 
-### Adapter Pattern
+## Adapter Pattern
 The Adapter Pattern allows us to access the functionality of an object using a different interface. This is again similar to the Proxy Pattern, but instead of retaining the same interface as the subject, it exposes a different interface.
 
-#### Example Use Case
+### Example Use Case
 We will attempt to build an Adapter around the LevelUP API, transforming it into an interface that is compatible with the core `fs` module. In particular, every call to `readFile()` and `writeFile()` will translate to `db.get()` and `db.put()`. This way, we could use the LevelUP database in place of existing `fs` implementations without making significant code changes.
 
 ```js
@@ -618,7 +619,7 @@ Note that `fs.readFile` and `fs.writeFile` are defined in a way that mimics the 
 In any existing implementations of `fs` with `readFile` and `writeFile`, we could simply replace the `fs` module dependency with `const fs = createFsAdapter(db)`. With this, the transition from filesystem to LevelUP db can be done without causing any changes in results!
 
 
-### Strategy Pattern
+## Strategy Pattern
 The Strategy pattern enables an object, called the *Context* to support variations in logic by extracting the variable parts into separate, interchangeable objects, called Strategies. The Context is then able to adapt its behaviour by attaching different Strategies to it. The strategies are usually a family of solutions that address a similar problem, and they implement the same interface - one that is expected by the Context.
 
 A rough example is a Context object called `Order`, in which has a method called `pay()`. To support different payment methods, we could:
@@ -627,7 +628,7 @@ A rough example is a Context object called `Order`, in which has a method called
 
 The first solution will require modifications to the `Order` object to support new payment methods. By using strategies, the `Order` object can remain untouched as we add new strategies to support new payment methods. 
 
-#### Example Use Case
+### Example Use Case
 Let's consider an object called `Config` that holds a set of configuration parameters. The object should:
 * be able to provide a simple interface to access these parameters
 * allow users to import and export the configuration using a file.
@@ -717,7 +718,7 @@ There are alternate approaches in arranging our strategies:
 The Strategy Pattern might appear in different forms too. In its simplest form, it can appear as functions - `function context(strategy) {...}`.
 
 
-### State Pattern
+## State Pattern
 State is a variation of the Strategy Pattern where the strategy changes depending on the state of the context. We have seen previously how a strategy can be selected, and once this selection is done, the strategy statys unchanged for the rest of the context's lifespan. Instead, in the State pattern, the strategy (also called *state*) is dynamic and can change during the context's lifetime. 
 
 Consider a hotel booking application that has a `Reservation` object and its 3 scenarios:
@@ -729,7 +730,7 @@ With the State Pattern, we could implement 3 strategies (or states), each repres
 
 The state transition can be initiated and controlled by the context object, by the client code or by the `State` objects themselves. The last option usually provides the best results in terms of flexibility and decoupling, as the context does not have to know about all the possible states and how to transition between them.
 
-#### Example Use Case
+### Example Use Case
 To demonstrate this pattern, we will implement a fail-safe client TCP socket that queues data sent during the time the server is offline, and tries to resend them once the server comes online. In this example, the fail-safe socket will be used by client machines to send resource utilization data at regular intervals.
 
 ```js
@@ -843,12 +844,12 @@ setInterval(() => {
 ```
 
 
-### Template Pattern
+## Template Pattern
 The Template Pattern is almost identical to the Strategy Pattern. Instead of *composing* the context and strategies together, the Template Pattern ties them together through classical inheritance. The parent class (or Template) would contain generic methods, while the child classes will have specific behaviours (or *template methods*). 
 
 Both Strategy and Template patterns allow us to change some parts of a context while reusing the common parts. The distinction is that Strategy allows us to do it *dynamically* (and possibly at runtime), but with Template, the complete structure is determined the moment the child classes are defined. With this, the Template Pattern might be more suitable in situations where we want to create prepackaged variations of an algorithm.
 
-#### Example Use Case
+### Example Use Case
 We will re-use the same configuration manager example in the Strategy Pattern section.
 
 ```js
@@ -906,10 +907,10 @@ Notes:
 * Notice that a `ConfigTemplate` object is never created as it is simply an *Abstract Class*.
 
 
-### Middleware Pattern
+## Middleware Pattern
 In the enterprise architecture jargon, 'middleware' represents the various software suites that help to abstract lower-level mechanisms, e.g. memory management, network communications. In the context of Nodejs Express, middleware are a set of functions that do just that - abstracting non-essential parts of the core application (authentication, compression/decompression etc.). The defining characteristic of middleware in the Express world is that they are organized as a processing pipeline, where a set of processing units, filters and handlers, in the form of functions, are connected to form an asynchronous sequence. This pattern is used well beyond the boundaries of Express and will be the focus of this section.
 
-#### Middleware Manager
+### Middleware Manager
 The set up of this pattern involves a `Middleware Manager` which is responsible for organizing and executing the middleware functions. Its implementation details:
 * New middleware can be registered by invoking the `use()` function. Usually new middleware are appended at the end of pipeline but this is not a strict rule.
 * When new data is received for processing, the registered middleware is invoked in an asynchronous sequential execution flow. Each unit receives the result from the previous middleware.
@@ -920,7 +921,7 @@ There is no strict rule on how the data is processed along the pipeline. Some st
 * Replacing data with result of some kind of processing.
 * Maintaining the immutability of data and always returning fresh copies
 
-#### Example Use Case
+### Example Use Case
 We will implement the middleware pattern for a message bus implementation called ZeroMQ. ZeroMQ is a lightweight messaging library that allows only strings and binary buffers for messages, so any encoding or custom formatting will have to be implemented manually. For this, we will implement a middleware infrastructure to encode/decode JSON messages before and after they get sent through the message bus. 
 
 The Middleware Manager:
@@ -1057,7 +1058,7 @@ setInterval(() => {
 ```
 
 
-### Command Pattern
+## Command Pattern
 This pattern seems unecessary at this point in time and will be covered later.
 
 <PostDate />
