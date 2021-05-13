@@ -71,6 +71,24 @@ Replaces all occurrences of either `-`, `_` or `*` with a space
 
 More can be found [here](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
 
+## Indirect Variable Expansion
+Useful when a variable stores the name of *another* variable, and we want to retrieve the value of the nested variable.
+
+```bash
+TOKEN_NAME='foobar'
+MY_ENV=TOKEN_NAME
+
+echo ${!MY_ENV}
+# Outputs "foobar"
+
+# If there is futher nesting, use temp variable
+# to expand through multiple levels of nesting
+ENV_NAME=MY_ENV
+temp_env=${!ENV_NAME}
+
+echo ${!temp_env}
+# Outputs "foobar"
+```
 
 <PostDate />
 <PageTags />
