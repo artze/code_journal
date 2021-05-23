@@ -51,7 +51,7 @@ function upsert(alarmObj) {
    *   ON DUPLICATE KEY UPDATE field1=value1, field2=value2;
    *
    * What happens when there is a duplicate device_id:
-   * 1. Attempt to inset new row
+   * 1. Attempt to insert new row
    * 2. Duplicate key error on unique_key device_id
    * 3. Instead of INSERT, MySQL will update the targeted row with
    *    provided update values
