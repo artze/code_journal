@@ -40,7 +40,7 @@ This will mock the entire module and replace all method implementations with `je
 
 +++
 
-We can set up jest auto-mock to retain selected functionalities:
+To solve this, we can set up jest auto-mock to retain selected functionalities:
 ```js
 jest.mock("aModule", () => {
   const originalModule = jest.requireActual("aModule");
