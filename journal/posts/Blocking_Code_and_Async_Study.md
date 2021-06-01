@@ -6,6 +6,11 @@ timestamp: 1622299163094
 ---
 
 # Blocking Code and Async Study
+::: warning WIP
+This post is a work in progress.
+:::
+
+Program set up:
 ```js
 // PROGRAM SET UP
 
@@ -33,7 +38,13 @@ asyncOperation()
     console.log('asyncOperation end')
   })
 console.log('Main context end')
+```
 
+## Observation
+We will observe how the program behaves in each of the cases below
+
+**Case 1**
+```js
 // Different scenarios for asyncOperation()
 // ============== CASE 1 ============== //
 async function asyncOperation() {
@@ -48,8 +59,15 @@ async function asyncOperation() {
 // 'sleep completed'
 // 'Main context end'
 // 'asyncOperation end'
+```
+1. The `timeoutPromise` async task yields the thread to the rest of _asyncOperation_.
+2. Then the blocking code triggers, followed by the rest of the code.
+3. Why does 'asyncOperation end' get printed at the very end? Suspect that promise callbacks are invoked at `nextTick`.
 
++++
 
+**Case 2**
+```js
 // ============== CASE 2 ============== //
 async function asyncOperation() {
   await timeoutPromise()
@@ -63,33 +81,13 @@ async function asyncOperation() {
 // AFTER 5 SECONDS
 // 'sleep completed'
 // 'asyncOperation end'
+```
+1. `await timeoutPromise` yields thread to the _main context_. After the task to print 'main context end' is completed, the thread comes back for the rest of `asyncOperation()`
 
-/**
- * Main context triggers asyncOperation(), does not wait,
- * and proceeds to print 'main context end'
- * 
- * 1. The 'await' keyword yields thread to the main context. 
- *    After the task to print 'main context end' is completed,
- *    the thread comes back for the rest of asyncOperation()
- *
- * 2. The blocking code triggers and only after that proceeds
- *    to march forward.
- */
+2. The blocking code triggers and after that prints 'sleep completed' and 'asyncOperation end'
 
-/**
- * Another way to look at this is to remove the async/await
- * synctactic sugar and go back to promises
- *
- * The following is equivalent to the async function above.
- * When asyncOperation() is triggered, the code simply marches on because all
- * tasks are callbacks that will be triggered after timeoutPromise finishes.
- * This is why 'main context end' gets printed first, before the rest of 
- * asyncOperation() gets run.
- *
- * 'asyncOperation end' gets called last because resolve() is only called
- * after sleep(5000) is completed
- */
-
+Another way to look at this is to remove the `async/await` synctactic sugar and go back to promises:
+```js
 function asyncOperation() {
   return new Promise((resolve) => {
     timeoutPromise().then(() => {
@@ -99,8 +97,16 @@ function asyncOperation() {
     })
   })
 }
+```
 
+When `asyncOperation()` is triggered, the code simply marches on to print 'main context end' because all `asyncOperation` tasks are callbacks that will be triggered after `timeoutPromise` finishes.
 
+`asyncOperation end` gets called last because resolve() is only called after `sleep(5000)` is completed
+
++++
+
+**Case 3**
+```js
 // ============== CASE 3 ============== //
 async function asyncOperation() {
   timeoutPromise()
@@ -116,8 +122,12 @@ async function asyncOperation() {
 // AFTER 5 SECONDS
 // 'sleep completed'
 // 'asyncOperation end'
+```
 
++++
 
+**Case 4**
+```js
 // ============== CASE 4 ============== //
 async function asyncOperation() {
   await timeoutPromise()

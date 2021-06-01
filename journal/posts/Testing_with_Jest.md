@@ -67,7 +67,7 @@ export const moduleA = {
 Using [selective auto-mocking](#selective-auto-mocking), we can preserve `utilFunction`. What we can do to mock instance class methods:
 ```js
 import { SomeClass } from "aModule";
-import { mocked } from "ts-jest";
+import { mocked } from "ts-jest/utils";
 
 jest.mock("aModule", () => {
   const originalModule = jest.requireActual("aModule");
