@@ -62,7 +62,15 @@ async function asyncOperation() {
 ```
 1. The `timeoutPromise` async task yields the thread to the rest of _asyncOperation_.
 2. Then the blocking code triggers, followed by the rest of the code.
-3. Why does 'asyncOperation end' get printed at the very end? Suspect that promise callbacks are invoked at `nextTick`.
+3. Why is 'asyncOperation end' printed at the very end? Because promise callbacks are deferred or invoked _asynchronously_. Within the internal Promise implementation, this can be achieved by:
+
+```js
+setTimeout(() => {
+  // invoke promise onFulfilled callbacks
+}, 0)
+```
+
+See example implementation [here](https://www.promisejs.org/implementing) following Promises/A+ spec.
 
 +++
 
