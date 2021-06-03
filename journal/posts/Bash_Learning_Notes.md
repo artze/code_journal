@@ -115,7 +115,7 @@ Can also be achieved with either `++i` or `i++`:
 - `++i` increments the variable and *returns the new value*
 - `i++` increments the variable and *returns the previous value*
 
-Decrement by using the `-` operator.\
+Decrement by using the `--` operator.
 
 ## Ternery Expression
 
