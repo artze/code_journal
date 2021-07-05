@@ -90,5 +90,27 @@ type MyExclude<A, B> = 'b' | 'c';
 type MyExclude<T, U> = T extends U ? never : T;
 ```
 
+## Access a Wrapped Type
+
+```ts
+// Goal
+
+type X = Promise<string>
+type Y = Promise<{ field: number }>
+
+Awaited<X>
+// Awaited utility should return `string` type
+
+Awaited<Y>
+// Awaited utility should return `{field: number}` type
+
+// Answer
+type Awaited<T extends Promise<any>> = T extends Promise<infer U> ? U : never;
+```
+
+Notes:
+
+- There is no way to directly access a nested type. The approach here makes use of `infer` keyword to see if the nested type can be figured out, and uses that.
+
 <PostDate />
 <PageTags />
