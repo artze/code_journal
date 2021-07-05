@@ -16,31 +16,30 @@ Based on type-challenges [here](https://github.com/type-challenges/type-challeng
 
 // Goal
 interface Todo {
-  title: string
-  description: string
-  completed: boolean
+  title: string;
+  description: string;
+  completed: boolean;
 }
-  
-type TodoPreview = MyPick<Todo, 'title' | 'completed'>
-  
+
+type TodoPreview = MyPick<Todo, 'title' | 'completed'>;
+
 const todo: TodoPreview = {
-    title: 'Clean room',
-    completed: false,
-}
+  title: 'Clean room',
+  completed: false,
+};
 
 // Answer
 
-type MyPick<T, K extends keyof T> = { [Prop in K]: T[Prop] }
-
+type MyPick<T, K extends keyof T> = { [Prop in K]: T[Prop] };
 ```
 
 Notes:
+
 - `K extends keyof T` ensures that `K` passed in coincides with object keys in `T`
 - `Prop in K`:
-  - `in` keyword iterates through the *union types* in `K`. Important to note that the `in` keyword is only able to iterate though *union types*
-  - `Prop` is simply a placeholder variable representing each element in the *union types* `K`. `Prop` can be replaced with any names.
+  - `in` keyword iterates through the _union types_ in `K`. Important to note that the `in` keyword is only able to iterate though _union types_
+  - `Prop` is simply a placeholder variable representing each element in the _union types_ `K`. `Prop` can be replaced with any names.
 - `T[Prop]` simply returns the type of the corresponding value in Object `T`, e.g. the type of `Todo.title`.
-
 
 ## Tuple to Object
 
@@ -48,33 +47,33 @@ Notes:
 // Convert a tuple type to an object type
 
 // Goal
-const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
+const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const;
 
 const result: TupleToObject<typeof tuple> = {
   tesla: 'tesla',
   'model 3': 'model 3',
   'model X': 'model X',
-  'model Y': 'model Y'
-}
+  'model Y': 'model Y',
+};
 
 // Answer
-type TupleToObject<T extends readonly string[]> = { [Prop in T[number]]: Prop }
+type TupleToObject<T extends readonly string[]> = { [Prop in T[number]]: Prop };
 ```
 
 Notes:
-```ts
-const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const
 
-typeof tuple
+```ts
+const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const;
+
+typeof tuple;
 // Equals the exact array ['tesla', 'model 3', 'model X', 'model Y']
 
-type TeslaModel = typeof tuple[number]; 
+type TeslaModel = typeof tuple[number];
 // Equals the possible values, i.e. the union types 'tesla' | 'model 3' | 'model X' | 'model Y'
-``` 
+```
 
 - `T extends readonly string[]` because `typeof tuple` equals an array with exacting elements.
 - `Prop in T[number]` works because `T[number]` produces union types, allowing `in` to iterate through it.
-
 
 ## Implement Exclude
 
@@ -82,13 +81,13 @@ type TeslaModel = typeof tuple[number];
 // Create your own Exclude implementation
 
 // Goal
-type A = 'a' | 'b' | 'c'
-type B = 'a'
+type A = 'a' | 'b' | 'c';
+type B = 'a';
 
-type MyExclude<A, B> = 'b' | 'c'
+type MyExclude<A, B> = 'b' | 'c';
 
 // Answer
-type MyExclude<T, U> = T extends U ? never : T
+type MyExclude<T, U> = T extends U ? never : T;
 ```
 
 <PostDate />
