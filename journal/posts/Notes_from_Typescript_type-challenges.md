@@ -112,5 +112,15 @@ Notes:
 
 - There is no way to directly access a nested type. The approach here makes use of `infer` keyword to see if the nested type can be figured out, and uses that.
 
+## Concat Types
+
+```ts
+// Write a concat type utility that produces the following result
+type Result = Concat<[1], [2]>; // expected to be [1, 2]
+
+// Answer
+type Concat<T extends any[], U extends any[]> = [...T, ...U];
+```
+
 <PostDate />
 <PageTags />
