@@ -29,7 +29,7 @@ timestamp: 1537498800000
 
 * Creating Subdomains:
 
-<https://www.digitalocean.com/community/questions/how-to-create-subdomain-for-my-blog-on-digital-ocean>
+<https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-server-blocks-virtual-hosts-on-ubuntu-16-04>
 
 <PostDate />
 <PageTags />
