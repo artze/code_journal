@@ -50,5 +50,44 @@ function dedupSortedArr(inputArr) {
 }
 ```
 
+## Binary Search
+
+Searching an element in a _sorted_ array. Covers scenario if search `target` does not exist.
+
+```js
+function binarySearch(arr, target) {
+  // Exit early if target is out of bounds
+  if (target < arr[0]) {
+    return -1;
+  }
+  if (target > arr[arr.length - 1]) {
+    return -1;
+  }
+
+  let min = 0;
+  let max = arr.length - 1;
+  while (min < max) {
+    const middleIndex = Math.floor((min + max) / 2);
+    if (nums[middleIndex] == target) {
+      return middleIndex;
+    }
+    if (nums[middleIndex] > target) {
+      max = middleIndex - 1;
+    } else if (nums[middleIndex] < target) {
+      min = middleIndex + 1;
+    }
+  }
+
+  return -1;
+}
+```
+
+If `min` stops being smaller than `max`, we can conclude that the `target` does not exist:
+
+1. When `target` does not exist, we will eventually come to `min = n` and `max = n + 1`.
+2. The computed `middleIndex` will equal `min` as we are taking `Math.floor`.
+3. If `arr[middleIndex] > target`, `max` will be adjusted and become smaller than `min`; if `arr[middleIndex] < target`, `min` will be adjusted and equal `max`.
+4. So, when `min > max` or when `min == max`, we can conclude that `target` does not exist.
+
 <PostDate />
 <PageTags />
