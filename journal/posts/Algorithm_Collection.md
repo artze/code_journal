@@ -66,14 +66,14 @@ function binarySearch(arr, target) {
 
   let min = 0;
   let max = arr.length - 1;
-  while (min < max) {
+  while (min <= max) {
     const middleIndex = Math.floor((min + max) / 2);
-    if (nums[middleIndex] == target) {
+    if (arr[middleIndex] == target) {
       return middleIndex;
     }
-    if (nums[middleIndex] > target) {
+    if (arr[middleIndex] > target) {
       max = middleIndex - 1;
-    } else if (nums[middleIndex] < target) {
+    } else if (arr[middleIndex] < target) {
       min = middleIndex + 1;
     }
   }
@@ -82,12 +82,12 @@ function binarySearch(arr, target) {
 }
 ```
 
-If `min` stops being smaller than `max`, we can conclude that the `target` does not exist:
+If `min` stops being smaller or equal to `max`, we can conclude that the `target` does not exist:
 
-1. When `target` does not exist, we will eventually come to `min = n` and `max = n + 1`.
+1. When `target` does not exist, we will eventually come to either `min == max` or `min = n; max = n + 1`.
 2. The computed `middleIndex` will equal `min` as we are taking `Math.floor`.
-3. If `arr[middleIndex] > target`, `max` will be adjusted and become smaller than `min`; if `arr[middleIndex] < target`, `min` will be adjusted and equal `max`.
-4. So, when `min > max` or when `min == max`, we can conclude that `target` does not exist.
+3. If `arr[middleIndex] > target`, `max` will be adjusted and become smaller than `min`; if `arr[middleIndex] < target`, `min` will be adjusted and become larger than `max`.
+4. So when `min < max`, we can conclude that `target` does not exist.
 
 <PostDate />
 <PageTags />
