@@ -89,5 +89,87 @@ If `min` stops being smaller or equal to `max`, we can conclude that the `target
 3. If `arr[middleIndex] > target`, `max` will be adjusted and become smaller than `min`; if `arr[middleIndex] < target`, `min` will be adjusted and become larger than `max`.
 4. So when `min < max`, we can conclude that `target` does not exist.
 
+## Two Sum
+
+Read [this](https://www.code-recipe.com/post/two-sum)
+
+## Three Sum
+
+Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+
+Notice that the solution set must not contain duplicate triplets.
+
+Example:
+
+```
+Input: nums = [-1, 0, 1, 2, -1, -4]
+Output: [[-1, -1, 2], [-1, 0, 1]]
+```
+
+Solution
+
+```js
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var threeSum = function (nums) {
+  nums = nums.sort((a, b) => {
+    if (a < b) {
+      return -1;
+    }
+    return 1;
+  });
+
+  const result = [];
+  for (let i = 0; i < nums.length - 2; i++) {
+    let j = i + 1;
+    let k = nums.length - 1;
+    if (nums[i] == nums[i - 1]) {
+      continue;
+    }
+    while (j < k) {
+      if (nums[i] + nums[j] + nums[k] < 0) {
+        j++;
+        continue;
+      }
+      if (nums[i] + nums[j] + nums[k] > 0) {
+        k--;
+        continue;
+      }
+      if (nums[i] + nums[j] + nums[k] == 0) {
+        if (nums[k] != nums[k + 1]) {
+          result.push([nums[i], nums[j], nums[k]]);
+        }
+        k--;
+      }
+    }
+  }
+
+  return result;
+};
+```
+
+Explanation:
+
+- This is a three-pointer solution, and starts with the following setup:
+
+```
+PointerA at i = 0;
+PointerB at i = 1;
+PointerC at i = arr.length - 1;
+```
+
+- There are two nested loops, the outer loop will control PointerA, whilst the inner loop will control PointerB and PointerC.
+- We first sort the input array to help us decide how to move PointerB and PointerC later on, and to help us exclude duplicates from our answer.
+- At each iteration of the outer loop:
+  - The inner loop will move PointerB and PointerC towards each other
+  - We move PointerB rightwards if the sum is less than 0, suggesting that we need a larger candidate
+  - We move PointerC leftwards if the sum is greater than 0, suggesting that we need a smaller candidate
+  - When we get `sum == 0`, we simply push it to the result array
+- We avoid duplicate values by skipping any num values that were seen before.
+
+[Source](https://www.code-recipe.com/post/three-sum)
+
 <PostDate />
 <PageTags />
