@@ -49,8 +49,19 @@ Update all packages _from standard repo_ in system
 pacman -Syu
 ```
 
-Arch does not support _partial_ upgrades (or upgrading of single packages), meaning that any upgrades need to be performed _system-wide_. 
+Arch does not support _partial_ upgrades (or upgrading of single packages), meaning that any upgrades need to be performed _system-wide_.
 
+### Common Issues
+
+#### "Invalid or corrupted package (PGP signature)" Error Message
+
+You might get this error message if you haven't updated packages in a long time. To solve this, simply reinstall `archlinux-keyring` by doing:
+
+```
+pacman -S archlinux-keyring
+```
+
+The command will update new keys and disable the revoked keys in your Arch Linux system. You should be able to update packages after this.
 
 ## `yay` commands
 
@@ -69,7 +80,6 @@ yay -Rs <packagename>
 ```
 
 +++
-
 
 Remove packages and its dependencies that are not required by other packages + remove config files
 
