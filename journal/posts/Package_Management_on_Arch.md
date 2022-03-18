@@ -107,6 +107,12 @@ _Not sure if it lists only AUR related packages or both AUR + standard repo_
 
 +++
 
+List installed AUR packages
+
+```
+yay -Qm
+```
+
 ## More Info
 
 Description on how packages are handled on Arch [here](https://www.reddit.com/r/archlinux/comments/8fqzf4/will_pacman_syu_also_update_the_stuff_i_have/dya3j0g?utm_source=share&utm_medium=web2x&context=3)
