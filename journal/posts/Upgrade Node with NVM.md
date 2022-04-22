@@ -1,7 +1,7 @@
 ---
 title: Upgrade Node with NVM
 description: How to upgrade node with nvm
-tags: ['node']
+tags: ['nodejs']
 timestamp: 1646216177076
 ---
 
