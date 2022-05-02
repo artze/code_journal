@@ -1,13 +1,75 @@
 ---
-title: Format USB Drive in Arch
-description: Steps to format USB drive in Arch
+title: Format Storage Devices in Arch
+description: Steps to format storage devices in Arch
 tags: ['archlinux']
 timestamp: 1651073572958
 ---
 
-# Format USB Drive in Arch
+# Format Storage Devices in Arch
 
-## 1. Wipe Everything
+## Securely Wipe all Data in Storage
+
+To securely wipe all data in storage, we would typically _overwrite_ all existing data with random bytes to make it difficult or impossible to recover data. This can be done with either `shred` or `dd`.
+
+### Using `shred`
+
+```
+sudo shred -vfz -n1 /dev/sdX
+```
+
+Notes:
+
+- `-v` verbose mode
+- `-f` change permissions to allow writing if necessary
+- `-z` add final overwrite with zeros to hide shredding
+- `-n` overwrite N times instead of the default 3
+
+The command above will overwrite all data with random bytes _once_ (because `-n1`), and do another round of overwrite with zero. This command wipes the entire storage device. To wipe only specific _partitions_, we can include the partition number:
+
+```
+sudo shred -vfz -n1 /dev/sdXn
+```
+
+Resources:
+
+- <https://www.freecodecamp.org/news/securely-erasing-a-disk-and-file-using-linux-command-shred/>
+- <https://wiki.archlinux.org/title/Securely_wipe_disk#shred>
+
+#### Troubleshooting
+
+If we run into the following error
+
+```
+error writing at offset xxx: Input/output error
+```
+
+We could get around it by adding the `-x` option, see [here](https://www.linuxquestions.org/questions/linux-general-1/problem-wiping-a-drive-with-shred-command-645258/#post5383350). This is untested.
+
+### Using `dd`
+
+Overwrite drive with random data
+
+```
+dd if=/dev/urandom of=/dev/sdX bs=<size in bytes> status=progress
+```
+
++++
+
+Overwrite drive with zeros
+
+```
+dd if=/dev/zero of=/dev/sdX bs=<size in bytes> status=progress
+```
+
+See `dd --help` for `bs` option input.
+
+## Format USB Sticks
+
+We can start by securely wiping all data in storage (optional)
+
++++
+
+Erase filesystem with `wipefs`
 
 ```
 sudo wipefs -a /dev/sdX
@@ -15,7 +77,9 @@ sudo wipefs -a /dev/sdX
 
 If you get a "Resource Busy" error, add the `force` option `-f`
 
-## 2. Create a New Partition
++++
+
+Create a New Partition
 
 ```
 sudo fdisk /dev/sdX
@@ -26,7 +90,9 @@ Once in the fdisk menu:
 - Create a partition table. In most cases, we will use GPT parition table. Use DOS partition table _only if_ we need to use this USB drive in older systems.
 - Create a new partition. The default 'Linux filesystem' type parition will do.
 
-## 3. Format Partition
++++
+
+Format Partition
 
 ```
 sudo mkfs.vfat /dev/sdXn -n VOLUME_NAME
