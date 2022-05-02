@@ -63,6 +63,8 @@ dd if=/dev/zero of=/dev/sdX bs=<size in bytes> status=progress
 
 See `dd --help` for `bs` option input.
 
+This method works for specific partitions too, just add the partition identifier to the command e.g. `/dev/sdXn`
+
 ## Format USB Sticks
 
 We can start by securely wiping all data in storage (optional)
