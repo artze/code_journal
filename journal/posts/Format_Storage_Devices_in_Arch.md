@@ -43,14 +43,14 @@ If we run into the following error
 error writing at offset xxx: Input/output error
 ```
 
-We could get around it by adding the `-x` option, see [here](https://www.linuxquestions.org/questions/linux-general-1/problem-wiping-a-drive-with-shred-command-645258/#post5383350). This is untested.
+We could get around it by adding the `-x` option, see [here](https://www.linuxquestions.org/questions/linux-general-1/problem-wiping-a-drive-with-shred-command-645258/#post5383350) (this is untested)
 
 ### Using `dd`
 
 Overwrite drive with random data
 
 ```
-dd if=/dev/urandom of=/dev/sdX bs=<size in bytes> status=progress
+dd if=/dev/urandom of=/dev/sdX bs=1M status=progress
 ```
 
 +++
@@ -58,12 +58,16 @@ dd if=/dev/urandom of=/dev/sdX bs=<size in bytes> status=progress
 Overwrite drive with zeros
 
 ```
-dd if=/dev/zero of=/dev/sdX bs=<size in bytes> status=progress
+dd if=/dev/zero of=/dev/sdX bs=1M status=progress
 ```
 
-See `dd --help` for `bs` option input.
-
 This method works for specific partitions too, just add the partition identifier to the command e.g. `/dev/sdXn`
+
+#### Block Size
+
+`bs` specifies the 'block size', i.e. how many bytes to read + write at a time. This parameter is mainly specified for performance reasons. See [here](https://serverfault.com/a/650138)
+
+Using `bs` in combination with `count` (number of blocks) will allow us to run `dd` for `bs * count` amount of data (instead of the entirety of the storage device).
 
 ## Format USB Sticks
 
