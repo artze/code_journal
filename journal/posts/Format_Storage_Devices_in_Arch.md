@@ -43,7 +43,7 @@ If we run into the following error
 error writing at offset xxx: Input/output error
 ```
 
-We could get around it by adding the `-x` option, see [here](https://www.linuxquestions.org/questions/linux-general-1/problem-wiping-a-drive-with-shred-command-645258/#post5383350) (this is untested)
+We could _probably_ get around it by adding the `-x` option, see [here](https://www.linuxquestions.org/questions/linux-general-1/problem-wiping-a-drive-with-shred-command-645258/#post5383350) (this is untested)
 
 ### Using `dd`
 
@@ -69,11 +69,23 @@ This method works for specific partitions too, just add the partition identifier
 
 Using `bs` in combination with `count` (number of blocks) will allow us to run `dd` for `bs * count` amount of data (instead of the entirety of the storage device).
 
+#### Resuming from a Specified Byte
+
+We can resume wiping a drive from n-th byte with the `seek` option. For example, if we wish to resume from byte 2000, we can do the following:
+
+```
+dd if=/dev/urandom of=/dev/sdX bs=1M seek=2000B status=progress
+```
+
+### Observations
+
+The following was observed when using the commands above:
+
+- Tried both approaches to wipe a 1TB HDD (with SATA to USB convertor). Was _not_ successful with the `shred` approach as it kept running into `error writing at offset xxx: Input/output error`. The `dd` approach ran successfully.
+- `bs=2M` for `dd` seems to give better performance result than 4096, 1M.
+- After either adding random bytes or zero-filling a partition, all partition info is wiped so it is no longer mount-able.
+
 ## Format USB Sticks
-
-We can start by securely wiping all data in storage (optional)
-
-+++
 
 Erase filesystem with `wipefs`
 
