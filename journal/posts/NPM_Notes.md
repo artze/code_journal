@@ -100,5 +100,9 @@ npm semver calculator:
 npm publish --tag next
 ```
 
+## Executable NPM Packages and `npx`
+
+A good StackOverflow answer on this topic <https://stackoverflow.com/a/52018825/5204647>
+
 <PostDate />
 <PageTags />
