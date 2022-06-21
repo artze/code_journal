@@ -57,5 +57,6 @@ module.exports = {
         ga: ' UA-106933848-3',
       },
     ],
+    ['vuepress-plugin-seo', {}],
   ],
 };
