@@ -20,7 +20,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^7.20.0",
-    "prettier": "^2.6.0"
+    "prettier": "^2.6.0",
+    "vuepress-plugin-seo": "^0.1.4"
   },
   "dependencies": {
     "@vuepress/plugin-google-analytics": "^1.9.7",
