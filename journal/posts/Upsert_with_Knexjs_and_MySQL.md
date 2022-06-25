@@ -7,68 +7,83 @@ timestamp: 1559376706000
 
 ## Upsert with Knexjs and MySQL
 
-Knexjs does not support UPSERT operations out of the box. This can be achieved by building a raw SQL query.
+Knexjs does not support UPSERT operations out of the box. We can create our own UPSERT function using raw SQL query with `INSERT ... ON DUPLICATE KEY UPDATE` statement. See docs [here](https://dev.mysql.com/doc/refman/8.0/en/insert-on-duplicate.html)).
 
-We can observe how this works by creating a helper to perform UPSERT operation
+We can illustrate this with an example. Let's say we want to UPSERT to a `users` table. The `users` table have the following columns:
+
+- id (primary key, unique index)
+- first_name
+- last_name
+- email (unique index)
+
+The UPSERT function we are about to create will insert a new row _if_ the unique index is not violated; otherwise, it will simply UPDATE the row.
+
+Our UPSERT function:
+
 ```js
-/**
- * let alarmObj be the object we want upsert-ed in the table 'alarms'.
- * `alarmObj.device_id` is set to be unique in the database table.
- */
-function upsert(alarmObj) {
+function upsertUser({ first_name, last_name, email }) {
   /**
    * We build an insert query
    */
-  const insert = knex('alarms').insert({
-    ...alarmObj,
+  const insert = knex('users').insert({
+    first_name,
+    last_name,
+    email,
     id: uuidv4(),
     created_at: knex.fn.now(),
-    updated_at: knex.fn.now()
+    updated_at: knex.fn.now(),
   });
 
   /**
    * We prepare the update object in case the UPSERT operation
    * ends up UPDATING the table row
+   *
+   * We omit the email here because this user  already exists
+   * and we only want to update non-unique fields
    */
-  const alarmUpdateObj = { ...alarmObj };
-  delete alarmUpdateObj.device_id;
-  alarmUpdateObj.updated_at = knex.fn.now();
+  const userUpdateObj = {
+    first_name,
+    last_name,
+    updated_at: knex.fn.now(),
+  };
+
   /**
    * We prepare an UPDATE string for the UPDATE operation
    *
    * The UPDATE string takes the following format
    * "field1=value1, field2=value2..."
    */
-  const rawUpdateParameters = Object.keys(alarmUpdateObj)
-    .map((field) => `${field}=${alarmUpdateObj[field]}`)
+  const rawUpdateParameters = Object.keys(userUpdateObj)
+    .map((field) => `${field}=${userUpdateObj[field]}`)
     .join(', ');
 
   /**
    * Finally, we build an UPSERT instruction with a raw SQL query.
-   * 
-   * The knex.raw query essentially translates to MYSQL query:
+   *
+   * The following knex.raw query essentially translates to MYSQL query:
    * INSERT INTO tableName VALUES (x, y)
    *   ON DUPLICATE KEY UPDATE field1=value1, field2=value2;
    *
-   * What happens when there is a duplicate device_id:
+   * What happens with this SQL query:
    * 1. Attempt to insert new row
    * 2. Duplicate key error on unique_key device_id
    * 3. Instead of INSERT, MySQL will update the targeted row with
    *    provided update values
    */
   return knex.raw('? ON DUPLICATE KEY UPDATE ?', [
-      insert,
-      knex.raw(rawUpdateParameters)
+    insert,
+    /**
+     * We need to wrap our `rawUpdateParameters` with knex.raw()
+     * because it is only a string (and not a knex object)
+     *
+     * knex.raw() docs: <https://knexjs.org/#Raw>
+     */
+    knex.raw(rawUpdateParameters),
   ]);
 }
 ```
 
-* The first part builds the INSERT query (without actually running it). The query is then injected into the raw SQL query via parameter binding.
-* The second part builds an update string which is required for the second part of the ON DUPLICATE KEY syntax. Because it is only a string, a knex.raw() wrapper is needed when injecting into the raw SQL query.
-
-ON DUPLICATE KEY syntax docs: <https://dev.mysql.com/doc/refman/8.0/en/insert-on-duplicate.html>
-
-knexjs `raw` method docs: <https://knexjs.org/#Raw>
+Our `upsertUser` function essentially prepares the INSERT and UPDATE parts of the `INSERT ... ON DUPLICATE KEY UPDATE` statement.
 
 <PostDate />
 <PageTags />
