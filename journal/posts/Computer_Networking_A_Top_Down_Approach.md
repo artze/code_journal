@@ -9,7 +9,9 @@ timestamp: 1659356988835
 
 [[toc]]
 
-## HTTP Protocol
+## The Web and HTTP
+
+### HTTP Protocol
 
 The HTTP protocol (application layer) works on top of the TCP protocol (Transport Layer). Characteristics of TCP protocol:
 
@@ -42,6 +44,24 @@ HTTP/1.1 persistent connections also supports _pipelining_, which allows the cli
 ### HTTP over multiple TCP Connections
 
 In a context where pipelining/multiplexing isn't possible (in a pre-HTTP/1.1 world), a workaround to enhance performance is to open multiple TCP connections. If a user requests for 10 web objects, the browser could open multiple TCP connections and fire HTTP requests _in parallel_. This offers better performance than having to chain request-response _in series_.
+
+### Web Caching
+
+![web-caching](../images/web-caching.png)
+
+Web caching can be achieved with a proxy server that is ideally physically close to the client. When a client requests a web object for the first time, the request is first sent to the proxy server to check if a cached copy exists; and subsequently sends another request to the origin web server for the object. On the response trip, the proxy server caches the object (with the Last Modified timestamp) and proceeds to send the object to the client.
+
+Any subsequent requests for the same object will simply be returned by the proxy server. After a period of time, there is a chance that the cached copy could be stale. To get around this, the proxy server could send a GET request with the following Header:
+
+```
+If-modified-since: Wed, 1 Aug 2022 09:23:28
+```
+
+This is known as a **Conditional GET Request**. If the object isn't modified since that date, the web server will simply return the following HTTP response status, with an empty response body:
+
+```
+304 Not Modified
+```
 
 <PostDate />
 <PageTags />
