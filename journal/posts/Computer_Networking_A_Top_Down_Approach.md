@@ -67,7 +67,7 @@ This is known as a **Conditional GET Request**. If the object isn't modified sin
 
 Telnet was originally created to allow users to remotely access another host (a functionality similar to SSH) and it works over TCP. Users could do this by:
 
-```sh
+```
 telnet 32.122.11.2
 ```
 
@@ -75,7 +75,7 @@ The above command will use telnet's default port 23. The command will later prom
 
 We could, however, provide a port number to the command:
 
-```sh
+```
 telnet 32.122.11.2 80
 ```
 
@@ -85,13 +85,13 @@ To go further, we can use `telnet` to establish a TCP connection, and _send_ dat
 
 1. Establish a TCP connection with `google.com` webserver on port 80:
 
-```sh
+```
 telnet www.google.com 80
 ```
 
 2. After successful TCP connection, the following will be prompted:
 
-```sh
+```
 Trying 172.217.166.132...
 Connected to www.google.com.
 Escape character is '^]'.
@@ -99,15 +99,15 @@ Escape character is '^]'.
 
 3. We can now type in any data to be sent over TCP. Here, we will send data that conforms with HTTP request format. Specifically, we will send a HEAD request for the page root `/` and specify the `Host` header:
 
-```sh
+```
 HEAD / HTTP/1.1
 Host: www.google.com
-# Hit enter twice to mark the end of message
+# Hit enter twice to mark end of message
 ```
 
 4. After sending, we will see a HTTP response returned!
 
-```sh
+```
 HTTP/1.1 200 OK
 Content-Type: text/html; charset=ISO-8859-1
 Date: Fri, 05 Aug 2022 10:09:00 GMT
