@@ -119,5 +119,59 @@ Expires: Fri, 05 Aug 2022 10:09:00 GMT
 Cache-Control: private
 ```
 
+## DNS
+
+DNS is:
+
+1. A distributed database implemented in a hierarchy of DNS Servers
+2. An application layer protocol that operates on top of UDP on port 53
+
+DNS is commonly employed by other application layer protocols (e.g. HTTP, SMTP) to translate user-supplied hostnames to IP addresses.
+
+### DNS in Web Browsing
+
+![DNS in Web Browsing](../images/dns-web-browsing.png)
+
+### DNS Services
+
+Apart from resolving hostnames to IP addresses, DNS provides other services too:
+
+#### Host Aliasing
+
+A hostname can have one or more aliases. For example a hostname such as `server-1.foobar.com` can can have aliases `www.foobar.com` and `foobar.com`. DNS can be invoked to obtain the _canonical hostname_ from an alias.
+
+#### Mail Server Aliasing
+
+Similarly, mail server hostnames can have aliases too. This is desirable to allow companies to have consistent aliases for their website and email addresses, e.g. `www.foobar.com`, `customerservice@foobar.com`.
+
+#### Load Balancing
+
+Popular websites could have multiple web servers to deal with scale. In these cases, a canonical hostname could be associated with a set of IP addresses. When a DNS query is made, a DNS server would return the entire set of IP addresses and _rotate_ their ordering in each reply. The DNS client typically uses the first IP address in the set, so the rotation will help distribute load across web servers.
+
+## DNS Query Chain
+
+![dns-query-chain](../images/dns-query-chain.png)
+
+To illustrate the DNS query chain, suppose we want the IP address of `gaia.cs.umass.edu`:
+
+1. First, the client makes a query to a Local DNS server. Typically this Local DNS server is provided by the ISP and is geographically close to the client host. This Local DNS server will act as a proxy for the subsequent DNS queries, in that it will make DNS queries _on behalf_ of the client.
+
+2. The Local DNS server then makes a query to the Root DNS server. Taking note of the `.edu` TLD, it returns the IP addresses for TLD DNS servers responsible for `.edu`.
+
+3. The Local DNS server again makes a query to the `.edu` TLD DNS Server. The TLD server takes note of `umass.edu`. In this example, the TLD server does not know the _authoritative_ DNS server for the hostname. "Authoritative" DNS servers are the ones that have the final IP of the hostname queried. But, it knows the address of an Intermediate DNS server that could lead us to the answer.
+
+4. And again, a query is made to the Intermediate DNS Server (let's say it's `dns.umass.edu`). This server takes note of `cs.umass.edu`, and returns the address of a DNS server `dns.cs.umass.edu` that has our final answer. `dns.cs.umass.edu` is said to be our Authoritative DNS Server because it holds the IP of our original query `gaia.cs.umass.edu`.
+
+5. The Local DNS makes a final query to the Authoritative DNS Server and obtains the final IP.
+
+6. The Local DNS server returns the final IP to the client host.
+
+There are a few things to take note from this example:
+
+- The query sent from Client Host to Local DNS Server is said to be a **recursive query**, where the target is making queries on the behalf of the initiator. Meanwhile, subsequent queries made from the Local DNS Server to other servers are said to be **iterative** queries.
+- In practice, the DNS query chain might be shorter as hostname-IP mappings are cached on Local DNS Servers.
+
+See [here](https://www.cloudflare.com/learning/dns/dns-server-types/) for different categories of DNS servers.
+
 <PostDate />
 <PageTags />
