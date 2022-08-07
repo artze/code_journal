@@ -148,7 +148,7 @@ Similarly, mail server hostnames can have aliases too. This is desirable to allo
 
 Popular websites could have multiple web servers to deal with scale. In these cases, a canonical hostname could be associated with a set of IP addresses. When a DNS query is made, a DNS server would return the entire set of IP addresses and _rotate_ their ordering in each reply. The DNS client typically uses the first IP address in the set, so the rotation will help distribute load across web servers.
 
-## DNS Query Chain
+### DNS Query Chain
 
 ![dns-query-chain](../images/dns-query-chain.png)
 
@@ -172,6 +172,34 @@ There are a few things to take note from this example:
 - In practice, the DNS query chain might be shorter as hostname-IP mappings are cached on Local DNS Servers.
 
 See [here](https://www.cloudflare.com/learning/dns/dns-server-types/) for different categories of DNS servers.
+
+### DNS Records
+
+The DNS Servers that make up the DNS distributed database store _resource records_. Each DNS reply message carries one or more resource records. Each resource record is a 4-tuple that contains the following fields:
+
+```
+(Name, Value, Type, TTL)
+```
+
+There are 4 types of records, each outlined below. For brevity, the TTL field is discarded from the following examples.
+
+#### Type A Record
+
+Type A records provide the standard hostname-to-IP address mapping. As an example, `(gaia.cs.umass.edu, 32.128.99.1, A)` is a Type A record.
+
+#### Type NS Record
+
+Type NS records provide the _hostname_ of the next DNS server in the query chain. These records are typically present in an Intermediate DNS Server that isn't authoritative for the DNS query, but could lead the requester closer to the answer. As an example, an NS record looks like `(gaia.cs.umass.edu, dns.umass.edu, NS)`.
+
+In these cases, the Intermediate DNS Server will also carry a Type A record of the _next_ DNS Server `(dns.umass,edu, 32.128.111.0, A)`.
+
+#### Type CNAME Record
+
+CNAME record enables DNS to provide us the feature of Host Aliasing. It contains the alias-hostname mapping, for example `(gaia.cs.umass.edu, server-west.bar.gaia.cs.umass.edu, CNAME)`.
+
+#### Type MX Record
+
+Silimar to CNAME, this record allows Mail Server aliasing. An example `(gaia.cs.umass.edu, mail.gaia.cs.umass.edu, MX)`.
 
 <PostDate />
 <PageTags />
