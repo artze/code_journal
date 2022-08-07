@@ -201,5 +201,14 @@ CNAME record enables DNS to provide us the feature of Host Aliasing. It contains
 
 Silimar to CNAME, this record allows Mail Server aliasing. An example `(gaia.cs.umass.edu, mail.gaia.cs.umass.edu, MX)`.
 
+### DNS Tools
+
+We can use tools such as `nslookup` and `dig` to make DNS queries. `dig` is recommended, see [here](https://unix.stackexchange.com/a/93809).
+
+Digging deeper into `dig`:
+
+- See [general usage docs](https://phoenixnap.com/kb/linux-dig-command-examples)
+- See how to trace DNS queries [here](https://jameshfisher.com/2017/08/10/dns-tracing/)
+
 <PostDate />
 <PageTags />
