@@ -210,5 +210,25 @@ Digging deeper into `dig`:
 - See [general usage docs](https://phoenixnap.com/kb/linux-dig-command-examples)
 - See how to trace DNS queries [here](https://jameshfisher.com/2017/08/10/dns-tracing/)
 
+### Registering a Domain Name
+
+Let's now take a look at how resource records are _added_ into the DNS database. Suppose we have a new website that is hosted on a single server through an IaaS provider such as DigitalOcean. This website needs a catchy hostname and we will give it a canonical hostname `captainspaghetti.com` without bothering with hostname aliases.
+
+The first step is to insert a Type A record into DigitalOcean's DNS Servers. Suppose that there are 2 such servers, one acting as primary `ns1.digitalocean.com` and the other as secondary `ns2.digitalocean.com`. These DNS Servers are said to be _authoritative_ because it maps our hostname to the IP of our website host. The record would look something like `(captainspaghetti.com, <website host IP>, A)`.
+
+The next step is to add resource records into `.com` TLD DNS Servers that will lead queries to DigitalOcean's DNS Servers. This is typically done through a Registrar (e.g. Namecheap) for a fee. The registrar will ensure that the following is added to `.com` TLD DNS Servers:
+
+```
+(captainspaghetti.com, ns1.digitalocean.com, NS)
+(ns1.digitalocean.com, <IP address of ns1.digitalocean.com>, A)
+
+# similar records will be entered for ns2.digitalocean.com
+```
+
+How a DNS query for `captainspaghetti.com` would look like:
+
+1. DNS query is made to `.com` TLD DNS server, and the server returns both Type NS and Type A records listed above.
+2. Subsequent DNS query is made to DigitalOcean's DNS Server, which contains the Type A record corresponing to `captainspaghetti.com`. The query resolves here with the IP it is looking for.
+
 <PostDate />
 <PageTags />
