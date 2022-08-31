@@ -97,16 +97,6 @@ yay -Sua
 
 +++
 
-List upgradable packages
-
-```sh
-yay -Pu
-```
-
-_Not sure if it lists only AUR related packages or both AUR + standard repo_
-
-+++
-
 List installed AUR packages
 
 ```
