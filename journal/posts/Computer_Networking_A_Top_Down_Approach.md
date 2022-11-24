@@ -9,6 +9,32 @@ timestamp: 1659356988835
 
 [[toc]]
 
+## Features of TCP and UDP
+
+### TCP
+
+Features:
+
+- **Connection-oriented service**: TCP has the client and server exchange transport-layer control information with each other before the application-level messages begin to flow. This so-called handshaking procedure alerts the client and server, allowing them to prepare for an onslaught of packets. After the handshaking phase, a TCP connection is said to exist between the sockets of two processes. The connection is a full-duplex connection in that the two processes can send messages to each other over the connection at the same time. When the application finishes sending messages, it must tear down the connection.
+- **Reliable data transfer service**: The communicating processes can rely on TCP to deliver all data sent without error and in the proper order. When one side of the application passes a stream of bytes into a socket, it can count on TCP to deliver the same stream of bytes to the receiving socket, with no missing or duplicate bytes.
+
+TCP also inccludes a congestion-control mechanism, which throttles a sending process when the network is congested between sender and receiver. The congestion-control mechanism also attempts to limit each TCP connection to its fair share of network bandwith. This mechanism serves to benefit the general welfare of the Internet.
+
+#### TCP and SSL
+
+Neither TCP nor UDP provides any encryption—the data that the sending process passes into its socket is the same data that travels over the network to the destination process. For the purposes of security, the Internet community has developed an enhancement for TCP -- Secure Sockets Layer (SSL). SSL provides provides critical process-to-process security services, including encryption, data integrity, and end-point authentication. SSL is not a third Internet transport protocol (on the same level as TCP and UDP), but instead is an enhancement of TCP, with enhancements being implemented in the _application layer_. If an appplication wants to use the services of SSL, it needs to include SSL libraries, and utilize SSL's own socket API that is similar to TCP socket API.
+
+When an application uses SSL, the sending process passes cleartext data to the SSL socket; SSL in the sending host then encrypts the data and passes the encrypted data to the TCP socket. The reverse happens on the receiving end.
+
+### UDP
+
+UDP is a no-frills, lightweight transport protocol, providing minimal services. UDP is connectionless, so there is no handshaking before the two processes start to communicate. UDP provides an unreliable data transfer service—that is, when a process sends a message into a UDP socket, UDP provides no guarantee that the message will ever reach the receiving process. Furthermore, messages that do arrive at the receiving process may arrive out of order.
+
+UDP does not include a congestion-control mechanism, so the sending side of UDP can pump data into
+the layer below (the network layer) at any rate it pleases. (Note, however, that the actual end-to-end
+throughput may be less than this rate due to the limited transmission capacity of intervening links or due
+to congestion).
+
 ## The Web and HTTP
 
 ### HTTP Protocol
