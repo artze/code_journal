@@ -1,15 +1,15 @@
 ---
 title: Package Management on Arch
-description: pacman + yay cheatsheet
+description: Guide for common package management operations
 tags: ['archlinux']
 timestamp: 1631933126633
 ---
 
 # Package Management on Arch
 
-Package Manger comomands that are commonly used.
+[[toc]]
 
-## `pacman` Commands
+## Common `pacman` Commands
 
 Install packages from Arch standard repository
 
@@ -51,19 +51,7 @@ pacman -Syu
 
 Arch does not support _partial_ upgrades (or upgrading of single packages), meaning that any upgrades need to be performed _system-wide_.
 
-### Common Issues
-
-#### "Invalid or corrupted package (PGP signature)" Error Message
-
-You might get this error message if you haven't updated packages in a long time. To solve this, simply reinstall `archlinux-keyring` by doing:
-
-```
-pacman -S archlinux-keyring
-```
-
-The command will update new keys and disable the revoked keys in your Arch Linux system. You should be able to update packages after this.
-
-## `yay` commands
+## Common `yay` commands
 
 Install packages from AUR repository
 
@@ -102,6 +90,50 @@ List installed AUR packages
 ```
 yay -Qm
 ```
+
+## `pacman` Mirrorlist
+
+`pacman` pulls packages from mirror sites listed in `etc/pacman.d/mirrorlist`. This list of mirrors may need to be updated from time to time so we have a list mirrors that have the fastest download times (for example).
+
+### Reflector
+
+We can use `reflector` to fetch the latest mirror list and overwrite `etc/pacman.d/mirrorlist`. See the [archwiki](https://wiki.archlinux.org/title/Reflector) for full configuration options.
+
+## Downgrading Packages
+
+### Using `pacman` Cache
+
+If a package was installed at an earlier stage, and the pacman cache was not cleaned, install an earlier version from `/var/cache/pacman/pkg/`.
+
+This process will remove the current package and install the older version. Dependency changes will be handled, but pacman will not handle version conflicts. If a library or other package needs to be downgraded with the packages, please be aware that you will have to downgrade this package yourself as well.
+
+```sh
+pacman -U file:///var/cache/pacman/pkg/package-old_version.pkg.tar.type
+```
+
+Note that type will be xz for older package builds, and zst for newer ones.
+
+[archwiki](https://wiki.archlinux.org/title/downgrading_packages)
+
+## Skip Package from being Upgraded
+
+We can skip upgrades for specific packages during `pacman -Syu` by including these packages in the `IgnorePkg` list.
+
+Go to `/etc/pacman.conf`, and can find the `IgnorePkg` list under the `[options]` section. The list accepts a _space separated_ list.
+
+[archwiki](https://wiki.archlinux.org/title/Pacman#Skip_package_from_being_upgraded)
+
+## Troubleshooting
+
+### "Invalid or corrupted package (PGP signature)" Error Message
+
+You might get this error message if you haven't updated packages in a long time. To solve this, simply reinstall `archlinux-keyring` by doing:
+
+```
+pacman -S archlinux-keyring
+```
+
+The command will update new keys and disable the revoked keys in your Arch Linux system. You should be able to update packages after this.
 
 ## More Info
 
