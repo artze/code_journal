@@ -89,7 +89,7 @@ This is known as a **Conditional GET Request**. If the object isn't modified sin
 304 Not Modified
 ```
 
-## Telnet
+## Make a TCP Connection with Telnet
 
 Telnet was originally created to allow users to remotely access another host (a functionality similar to SSH) and it works over TCP. Users could do this by:
 
@@ -144,6 +144,11 @@ Transfer-Encoding: chunked
 Expires: Fri, 05 Aug 2022 10:09:00 GMT
 Cache-Control: private
 ```
+
+::: tip
+We can use `netcat` as an alternative for this raw HTTP exercise.
+See docs [here](https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections)
+:::
 
 ## DNS
 
