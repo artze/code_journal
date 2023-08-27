@@ -50,13 +50,5 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    [
-      '@vuepress/google-analytics',
-      {
-        ga: ' UA-106933848-3',
-      },
-    ],
-    ['vuepress-plugin-seo', {}],
-  ],
+  plugins: [['vuepress-plugin-seo', {}]],
 };
