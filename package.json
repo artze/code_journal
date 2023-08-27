@@ -24,7 +24,6 @@
     "vuepress-plugin-seo": "^0.1.4"
   },
   "dependencies": {
-    "@vuepress/plugin-google-analytics": "^1.9.7",
     "vuepress": "^1.9.7"
   }
 }
