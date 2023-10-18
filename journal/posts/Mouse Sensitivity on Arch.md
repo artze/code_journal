@@ -44,5 +44,16 @@ And that's it! The acceleration value is updated. However, this configuration wi
 xinput set-prop "pointer:Logitech MX Vertical" "libinput Accel Speed" 1
 ```
 
+## Customizing Logitech MX Mouse
+
+The max sensitivity of the config above was not enough for me. There is further customization we can do with Logitech MX mouse.
+
+See [archwiki](https://wiki.archlinux.org/title/Logitech_MX_Master)
+
+Notes:
+
+- Sensitivity can be adjusted with the `dpi` property
+- Archwiki says to run `logid -v` to get the name of device. `sudo` is required to get this to work.
+
 <PostDate />
 <PageTags />
