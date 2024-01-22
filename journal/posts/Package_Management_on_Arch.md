@@ -99,6 +99,39 @@ yay -Qm
 
 We can use `reflector` to fetch the latest mirror list and overwrite `etc/pacman.d/mirrorlist`. See the [archwiki](https://wiki.archlinux.org/title/Reflector) for full configuration options.
 
+## `pacman` Cache Buildup
+
+`pacman` cache keeps all previously installed packages and is not cleaned up automatically.
+
+We can use `paccache` (comes with `pacman-contrib` package) to clean up cache. See [archwiki](https://wiki.archlinux.org/title/pacman#Cleaning_the_package_cache).
+
+Run the following to clean up cache. The command keeps the most recent 3 versions of packages by default.
+
+```
+paccache -r
+```
+
+### Setting up `paccache` Timer
+
+`paccache` comes with a `systemd timer` (`paccache.timer`). We can set it up to run automatically at an interval by `enabling` and `starting` the `systemd timer` unit. See [archwiki](https://wiki.archlinux.org/title/Systemd#Using_units).
+
+By default, `paccache.timer` is set to run on a weekly basis. This may be too often and we can change it to run monthly instead.
+
+#### Editing `paccache.timer` to Run Monthly
+
+Edit `paccache.timer` with "drop-in files" following this [archwiki](https://wiki.archlinux.org/title/Systemd#Drop-in_files).
+
+The override file should look like this:
+
+```
+[Timer]
+OnCalendar=
+OnCalendar=monthly
+```
+
+- See [here](https://unix.stackexchange.com/questions/479702/cannot-override-systemd-timer-with-specific-time) to understand why we need to set `OnCalendar=` first.
+- See [systemd.time man](https://man.archlinux.org/man/systemd.time.7#CALENDAR_EVENTS) to the possible configurations for `OnCalendar`.
+
 ## Downgrading Packages
 
 ### Using `pacman` Cache
