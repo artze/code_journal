@@ -19,7 +19,7 @@ jobs:
           echo "$KEY" > ~/.ssh/gh_actions
           chmod 600 ~/.ssh/gh_actions
           cat >>~/.ssh/config <<END
-          Host live
+          Host $HOST
             HostName $HOST
             User $USER
             IdentityFile ~/.ssh/gh_actions
