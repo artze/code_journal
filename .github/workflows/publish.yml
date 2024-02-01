@@ -8,4 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: git status
+      - name: publish
+        env:
+          KEY: ${{ secrets.KEY }}
+          REMOTE: ${{ secrets.REMOTE }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$KEY" > ~/.ssh/gh_actions
+          chmod 600 ~/.ssh/gh_actions
+          git remote add live $REMOTE
+          git push live master
