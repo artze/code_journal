@@ -12,9 +12,17 @@ jobs:
         env:
           KEY: ${{ secrets.KEY }}
           REMOTE: ${{ secrets.REMOTE }}
+          HOST: ${{ secrets.HOST }}
+          USER: ${{ secrets.USER }}
         run: |
           mkdir -p ~/.ssh/
           echo "$KEY" > ~/.ssh/gh_actions
           chmod 600 ~/.ssh/gh_actions
+          cat >>~/.ssh/config <<END
+          Host live
+            HostName $HOST
+            User $USER
+            IdentityFile ~/.ssh/gh_actions
+          END
           git remote add live $REMOTE
           git push live master
