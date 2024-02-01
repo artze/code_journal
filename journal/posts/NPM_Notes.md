@@ -91,7 +91,7 @@ npm semver calculator:
 "version": "1.2.2-beta.0"
 ```
 
-2. Publish with custom tag. Here, we will use `next` tag to follow npm conventions. This tag is is important:
+2. Publish with custom tag. Here, we will use `next` tag to follow npm conventions. This tag is important:
 
 - To prevent user from installing pre-releases when installing npm with `npm install package`. This installation command will pull packages tagged with `latest`.
 - To allow user to install pre-releases with `npm install package@next`
