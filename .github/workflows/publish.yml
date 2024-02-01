@@ -23,6 +23,7 @@ jobs:
             HostName $HOST
             User $USER
             IdentityFile ~/.ssh/gh_actions
+            StrictHostKeyChecking no
           END
           git remote add live $REMOTE
           git push live master
