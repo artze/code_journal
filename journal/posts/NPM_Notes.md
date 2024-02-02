@@ -104,5 +104,9 @@ npm publish --tag next
 
 A good StackOverflow answer on this topic <https://stackoverflow.com/a/52018825/5204647>
 
+## `npm version`
+
+See [this post](https://jasonraimondi.com/posts/use-the-npm-version-command-to-semantically-version-your-node-project/) for usage examples.
+
 <PostDate />
 <PageTags />
