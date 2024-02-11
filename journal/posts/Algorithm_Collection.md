@@ -171,5 +171,58 @@ PointerC at i = arr.length - 1;
 
 [Source](https://www.code-recipe.com/post/three-sum)
 
+## Selection Sort
+
+In computer science, selection sort is a sorting algorithm, specifically an in-place comparison sort. It has O(n2) time complexity, making it inefficient on large lists, and generally performs worse than the similar insertion sort.
+
+The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
+
+```js
+var swap = function (array, firstIndex, secondIndex) {
+  var temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
+};
+
+var indexOfMinimum = function (array, startIndex) {
+  var minValue = array[startIndex];
+  var minIndex = startIndex;
+
+  for (var i = minIndex + 1; i < array.length; i++) {
+    if (array[i] < minValue) {
+      minIndex = i;
+      minValue = array[i];
+    }
+  }
+  return minIndex;
+};
+
+var selectionSort = function (array) {
+  for (var i = 0; i < array.length; i++) {
+    swap(array, i, indexOfMinimum(array, i));
+  }
+};
+```
+
+## Insertion Sort
+
+![insertion_sort_gif](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+
+```js
+function insert(array, rightIndex, value) {
+  for (var j = rightIndex; j > -1 && array[j] > value; j--) {
+    array[j + 1] = array[j];
+  }
+  array[j + 1] = value;
+}
+
+function insertionSort(array) {
+  for (var i = 1; i < array.length; i++) {
+    insert(array, i - 1, array[i]);
+  }
+  return array;
+}
+```
+
 <PostDate />
 <PageTags />
