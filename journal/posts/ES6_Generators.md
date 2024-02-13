@@ -83,7 +83,7 @@ Example notes:
 
 ```js
 function* iteratorGenerator(arr) {
-  for (let i = 0; i < arr.legth; i++) {
+  for (let i = 0; i < arr.length; i++) {
     yield arr[i];
   }
 }
