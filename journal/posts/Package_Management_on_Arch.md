@@ -21,7 +21,7 @@ pacman -S <packagename>
 
 Remove packages and its dependencies that are not required by other packages
 
-```
+```sh
 pacman -Rs <packagename>
 ```
 
@@ -39,6 +39,14 @@ Query installed packages
 
 ```sh
 pacman -Qs <packagename>
+```
+
++++
+
+Get detailed info of a package (e.g. installation date)
+
+```sh
+pacman -Qi <packagename>
 ```
 
 +++
