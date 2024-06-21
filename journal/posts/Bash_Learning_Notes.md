@@ -308,5 +308,14 @@ This can be resolved with `bc`
     echo $sum
 ```
 
+## Parse CLI Arguments with `getopts`
+
+Bash offers a basic command `getopts` to parse CLI arguments. Useful links:
+
+- <https://man7.org/linux/man-pages/man1/getopts.1p.html>
+- <https://kodekloud.com/blog/bash-getopts/>
+- <https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash>
+- <https://unix.stackexchange.com/questions/426483/what-is-the-purpose-of-the-very-first-character-of-the-option-string-of-getopts>
+
 <PostDate />
 <PageTags />
