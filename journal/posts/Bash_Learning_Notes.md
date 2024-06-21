@@ -34,7 +34,7 @@ Take note that we are using `$0` which represents `./foo.sh` when we run `./foo.
 $(command)
 ```
 
-Command substitution allows the *output* of a command to replace the command itself.
+Command substitution allows the _output_ of a command to replace the command itself.
 
 ## Arithmetic Expansion
 
@@ -81,12 +81,13 @@ echo "$VAR1"
 ```
 
 ## Change String Case
-| Operator | Description |
-| --- | --- |
-| ^ | Convert first char to uppercase |
-| ^^ | Convert all chars to uppercase |
-| , | Convert first char to lowercase |
-| ,, | Convert all chars to lowercase |
+
+| Operator | Description                     |
+| -------- | ------------------------------- |
+| ^        | Convert first char to uppercase |
+| ^^       | Convert all chars to uppercase  |
+| ,        | Convert first char to lowercase |
+| ,,       | Convert all chars to lowercase  |
 
 ```bash
 str1="foo bar"
@@ -112,8 +113,9 @@ ${languages^^[p,j]} # Perl Python Java Php
 With `i+=1` similar to other languages.
 
 Can also be achieved with either `++i` or `i++`:
-- `++i` increments the variable and *returns the new value*
-- `i++` increments the variable and *returns the previous value*
+
+- `++i` increments the variable and _returns the new value_
+- `i++` increments the variable and _returns the previous value_
 
 Decrement by using the `--` operator.
 
@@ -126,10 +128,13 @@ Decrement by using the `--` operator.
 ## Comparison Operators
 
 ### String Comparison
+
 Both `=` and `==` can be used in Bash for string comparison. However, only `=` is POSIX compliant and guaranteed to work in all sh. `==` is Bash specific.
 
 ### Numerical Comparison
+
 `-eq` must be used for numerical comparisons. Other comparison operators:
+
 - `-ne`
 - `-lt`
 - `-le`
@@ -142,23 +147,23 @@ Both `=` and `==` can be used in Bash for string comparison. However, only `=` i
 result=$(echo "${input//[_0-9 \\\".]/}" | grep -o . | sort -u | tr -d "\n")
 ```
 
-Let's unpack what's going on here. 
+Let's unpack what's going on here.
 
 `${input//[_0-9 \\\".]/}` filters out the chars `_`, ` ` (space), `numbers`, `.`, `\` and `"` by replacing them with nothing. See [here](./Shell_Parameter_Expansion.md#string-replace).
 
 +++
 
-`grep -o <pattern>`. The `-o` or `--only-matching` option outputs *only* the matching parts (everything else in the same line is discarded), with each match on a newline. 
+`grep -o <pattern>`. The `-o` or `--only-matching` option outputs _only_ the matching parts (everything else in the same line is discarded), with each match on a newline.
 
 ::: tip
-Remember that plain old `grep <pattern>` will *highlight* the matching parts, but still outputs the *entire* corresponding lines.
+Remember that plain old `grep <pattern>` will _highlight_ the matching parts, but still outputs the _entire_ corresponding lines.
 :::
 
 The `.` in `grep -o .` means that all characters are a matching pattern. This essentially separates each input character into a newline.
 
 +++
 
-The `sort` command typically sorts *lines* in a file, which is why we needed to split each input character into a newline. The `-u` option removes duplicates.
+The `sort` command typically sorts _lines_ in a file, which is why we needed to split each input character into a newline. The `-u` option removes duplicates.
 
 More info on `sort` command [here](https://www.geeksforgeeks.org/sort-command-linuxunix-examples/)
 
@@ -169,6 +174,7 @@ The `tr` command is an abbreviation of translate. The `-d` or `--delete` option 
 More on `tr` [here](https://linuxize.com/post/linux-tr-command/)
 
 ## Capture Whitespace Characters with Regex
+
 The `=~` regex matcher operator in Bash supports 'extended regular expressions' which means it supports Character Classes notation like below:
 
 - `[[:blank:]]` means space and tab. This makes it similar to: [ \t].
@@ -184,6 +190,7 @@ See list of Character Classes [here](https://en.wikibooks.org/wiki/Regular_Expre
 ```
 
 ## Hashmaps in Bash
+
 Hashmaps in Bash can be achieved by using an associative array.
 
 ```bash
@@ -214,6 +221,7 @@ echo ${#hashmap[@]} # outputs 2
 ```
 
 ## Case Statements
+
 ```bash
 # Syntax
 case expression in
@@ -225,7 +233,7 @@ case expression in
     ;;
   *)
     # do something
-    ;; 
+    ;;
 esac
 
 
@@ -254,7 +262,9 @@ esac
 ```
 
 ## Handling Exponents and Large Numbers
+
 In Bash, we can get results of exponentiation by
+
 ```bash
 echo $(( 2 ** 5 )) # Equivalent to 2^5
 
@@ -262,6 +272,7 @@ echo $(( 2 ** 5 )) # Equivalent to 2^5
 ```
 
 But if the resulting number is too large, (when it is larger than `2^63 - 1`), it will not be handled correctly. See more [here](https://stackoverflow.com/a/23044929/5204647). You will instead require a calculator program such as `bc`
+
 ```bash
 echo $(echo "2 ^ 80" | bc)
 
@@ -279,13 +290,14 @@ do
   exp_product=$(echo "2 ^ $(( $i - 1 ))" | bc)
   (( sum+=$exp_product ))
 done
-echo $sum 
+echo $sum
 
 # outputs -1
 # The correct value should be 18446744073709551615
 ```
 
 This can be resolved with `bc`
+
 ```bash
     sum=0
     for i in {1..64}
