@@ -184,6 +184,12 @@ pacman -S archlinux-keyring
 
 The command will update new keys and disable the revoked keys in your Arch Linux system. You should be able to update packages after this.
 
+### `yay` Tries to Install Bloated `chromium-mirror`
+
+When upgrading AUR packages with `yay`, it may try to pull ~40GB worth of files from `.../electron25/chromium-mirror` if some of your packages require `electron25` as a dependency.
+
+You can get around this by first installing `electron25-bin` (see [here](https://aur.archlinux.org/packages/electron25-bin)) to satisfy the dependency, then upgrade your AUR packages.
+
 ## More Info
 
 Description on how packages are handled on Arch [here](https://www.reddit.com/r/archlinux/comments/8fqzf4/will_pacman_syu_also_update_the_stuff_i_have/dya3j0g?utm_source=share&utm_medium=web2x&context=3)
