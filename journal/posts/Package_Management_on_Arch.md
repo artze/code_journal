@@ -27,7 +27,7 @@ pacman -Rs <packagename>
 
 +++
 
-List installed packages
+List installed packages (including AUR)
 
 ```sh
 pacman -Qs
@@ -35,10 +35,26 @@ pacman -Qs
 
 +++
 
-Query installed packages
+Search installed packages (including AUR)
 
 ```sh
-pacman -Qs <packagename>
+pacman -Qs <regex>
+```
+
++++
+
+List installed packages only found in sync db(s)
+
+```sh
+pacman -Qn
+```
+
++++
+
+List installed packages _not_ found in sync db(s) (e.g. AUR only)
+
+```sh
+pacman -Qm
 ```
 
 +++
