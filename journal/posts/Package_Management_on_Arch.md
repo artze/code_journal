@@ -99,6 +99,14 @@ List installed AUR packages
 yay -Qm
 ```
 
++++
+
+Clean `yay` cache from `~/.cache/yay/` (AUR only)
+
+```sh
+yay -Sca
+```
+
 ## `pacman` Mirrorlist
 
 `pacman` pulls packages from mirror sites listed in `etc/pacman.d/mirrorlist`. This list of mirrors may need to be updated from time to time so we have a list mirrors that have the fastest download times (for example).
