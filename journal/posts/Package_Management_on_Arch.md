@@ -188,6 +188,18 @@ Go to `/etc/pacman.conf`, and can find the `IgnorePkg` list under the `[options]
 
 [archwiki](https://wiki.archlinux.org/title/Pacman#Skip_package_from_being_upgraded)
 
+## Upgrading `yay`
+
+You will need to upgrade `yay` manually if it was installed by building from source following [this guide](https://github.com/Jguer/yay?tab=readme-ov-file#source).
+
+First, remove `yay` with `pacman` (like you would any other package):
+
+```
+pacman -Rs yay
+```
+
+Re-install `yay` following the [same guide](https://github.com/Jguer/yay?tab=readme-ov-file#source) above.
+
 ## Troubleshooting
 
 ### "Invalid or corrupted package (PGP signature)" Error Message
