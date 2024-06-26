@@ -200,6 +200,38 @@ pacman -Rs yay
 
 Re-install `yay` following the [same guide](https://github.com/Jguer/yay?tab=readme-ov-file#source) above.
 
+## Inspect Dependency Tree of a Package
+
+Use `pactree` to view dependencies of a package. Example usage to view dependencies of `bash`:
+
+```
+~$ pactree bash
+bash
+├─readline
+│ ├─glibc
+│ │ ├─linux-api-headers>=4.10
+│ │ ├─tzdata
+│ │ └─filesystem
+│ │   └─iana-etc
+│ ├─ncurses
+│ │ ├─glibc
+│ │ └─gcc-libs
+│ │   └─glibc>=2.27
+│ └─ncurses provides libncursesw.so=6-64
+├─readline provides libreadline.so=8-64
+├─glibc
+└─ncurses
+```
+
+The reverse is also possible: you can view the _dependents_ of a package with the `-r` (reverse) flag:
+
+```
+~$ pactree -r snappy
+snappy
+└─ffmpeg
+  └─firefox
+```
+
 ## Troubleshooting
 
 ### "Invalid or corrupted package (PGP signature)" Error Message
