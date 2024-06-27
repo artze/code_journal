@@ -317,5 +317,81 @@ Bash offers a basic command `getopts` to parse CLI arguments. Useful links:
 - <https://stackoverflow.com/questions/16483119/an-example-of-how-to-use-getopts-in-bash>
 - <https://unix.stackexchange.com/questions/426483/what-is-the-purpose-of-the-very-first-character-of-the-option-string-of-getopts>
 
+## Read Lines from File
+
+There are a number of ways to read lines from files.
+
+```sh
+while read -r l ; do
+  echo "$l"
+done < input-file.txt
+```
+
+This approach is well and good, but:
+
+- It will omit the last line of the file if it is not followed by a newline character
+- Any leading spaces will be omitted
+
+For example:
+
+```
+# input-file.txt
+abc
+ def
+jkl
+
+# No newline char after jkl
+```
+
+gives us the following output:
+
+```
+abc
+def
+```
+
++++
+
+The following approach can address the last line ommission issue:
+
+```sh
+while read -r l || [[ -n $l ]] ; do
+  echo "$l"
+done < input-file.txt
+```
+
+gives us:
+
+```
+abc
+def
+jkl
+```
+
++++
+
+And finally:
+
+```sh
+while IFS="" read -r l || [[ -n $l ]] ; do
+  echo "$l"
+done < input-file.txt
+```
+
+gives us:
+
+```
+abc
+ def
+jkl
+```
+
+Related links:
+
+- <https://linuxize.com/post/bash-read/>
+- <https://stackoverflow.com/questions/1521462/looping-through-the-content-of-a-file-in-bash>
+- <https://unix.stackexchange.com/questions/18886/why-is-while-ifs-read-used-so-often-instead-of-ifs-while-read>
+- <https://stackoverflow.com/questions/26479562/what-does-ifs-do-in-this-bash-loop-cat-file-while-ifs-read-r-line-do>
+
 <PostDate />
 <PageTags />
