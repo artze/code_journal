@@ -23,16 +23,16 @@ See additional guidance on `wipefs` [here](https://unix.stackexchange.com/a/7569
 
 +++
 
-Create a New Partition
+Then run the following:
 
 ```
 sudo fdisk /dev/sdX
 ```
 
-Once in the fdisk menu:
+Once in the `fdisk` menu:
 
 - Create a partition table. In most cases, we will use GPT parition table. Use DOS partition table _only if_ we need to use this USB drive in older systems.
-- Create a new partition. The default 'Linux filesystem' type parition will do.
+- Create a new partition. The default 'Linux filesystem' type partition will do.
 
 +++
 
