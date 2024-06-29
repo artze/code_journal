@@ -7,17 +7,19 @@ timestamp: 1651073572958
 
 # Format USB Stick in Arch
 
-To securely wipe all data in USB stick, see [here](/posts/Securely_Wipe_Storage_Device.md)
+To **securely** wipe all data in USB stick, see [here](/posts/Securely_Wipe_Storage_Device.md)
 
 +++
 
-Erase filesystem with `wipefs`
+Erase the _partition table_ with `wipefs`
 
 ```
 sudo wipefs -a /dev/sdX
 ```
 
 If you get a "Resource Busy" error, add the `force` option `-f`
+
+See additional guidance on `wipefs` [here](https://unix.stackexchange.com/a/756991)
 
 +++
 
