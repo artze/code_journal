@@ -143,4 +143,5 @@
 
 :root {
   --vp-font-family-base: 'Roboto', sans-serif;
+  --vp-font-family-mono: 'Fira Mono', monospace;
 }
