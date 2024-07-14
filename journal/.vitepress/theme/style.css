@@ -61,10 +61,12 @@
 
 :root {
   --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f6f6f7;
 }
 
 .dark {
   --vp-c-bg: #1a1a1a;
+  --vp-c-bg-alt: #242424;
 }
 
 /**
@@ -143,10 +145,12 @@
 
 :root {
   --vp-code-color: #476582;
+  --vp-code-block-bg: #292d3e;
 }
 
 .dark {
   --vp-code-color: #aac8e4;
+  --vp-code-block-bg: var(--vp-c-bg-alt);
 }
 
 /**
