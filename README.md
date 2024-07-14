@@ -12,3 +12,10 @@ A code journal made with Vuepress.
 - [x] Update post list box width
 - [ ] Unordered list line height
 - [ ] Make color adjustments for dark theme
+  - [x] text color
+  - [x] inline code text color
+  - [x] inline code bg color
+  - [ ] inline code text color in headers
+  - [ ] block code text color
+  - [ ] block code bg color
+  - [ ] brand color
