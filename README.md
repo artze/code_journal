@@ -16,6 +16,6 @@ A code journal made with Vuepress.
   - [x] inline code text color
   - [x] inline code bg color
   - [ ] inline code text color in headers
-  - [ ] block code text color
-  - [ ] block code bg color
+  - [x] block code text color
+  - [x] block code bg color
   - [ ] brand color
