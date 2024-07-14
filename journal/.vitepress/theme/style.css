@@ -39,6 +39,29 @@
 }
 
 /**
+ * Colors: Background
+ *
+ * - `bg`: The bg color used for main screen.
+ *
+ * - `bg-alt`: The alternative bg color used in places such as "sidebar",
+ *   or "code block".
+ *
+ * - `bg-elv`: The elevated bg color. This is used at parts where it "floats",
+ *   such as "dialog".
+ *
+ * - `bg-soft`: The bg color to slightly distinguish some components from
+ *   the page. Used for things like "carbon ads" or "table".
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-bg: #ffffff;
+}
+
+.dark {
+  --vp-c-bg: #1a1a1a;
+}
+
+/**
  * Colors: Text
  *
  * - `text-1`: Used for primary text.
