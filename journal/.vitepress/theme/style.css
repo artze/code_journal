@@ -39,6 +39,28 @@
 }
 
 /**
+ * Colors: Text
+ *
+ * - `text-1`: Used for primary text.
+ *
+ * - `text-2`: Used for muted texts, such as "inactive menu" or "info texts".
+ *
+ * - `text-3`: Used for subtle texts, such as "placeholders" or "caret icon".
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-text-1: rgba(44, 62, 80);
+  --vp-c-text-2: rgba(44, 62, 80, 0.78);
+  --vp-c-text-3: rgba(44, 62, 80, 0.56);
+}
+
+.dark {
+  --vp-c-text-1: rgba(255, 255, 255, 0.87);
+  --vp-c-text-2: rgba(235, 235, 235, 0.6);
+  --vp-c-text-3: rgba(235, 235, 235, 0.38);
+}
+
+/**
  * Colors: Function
  *
  * - `default`: The color used purely for subtle indication without any
@@ -84,28 +106,6 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
-}
-
-/**
- * Colors: Text
- *
- * - `text-1`: Used for primary text.
- *
- * - `text-2`: Used for muted texts, such as "inactive menu" or "info texts".
- *
- * - `text-3`: Used for subtle texts, such as "placeholders" or "caret icon".
- * -------------------------------------------------------------------------- */
-
-:root {
-  --vp-c-text-1: rgba(44, 62, 80);
-  --vp-c-text-2: rgba(44, 62, 80, 0.78);
-  --vp-c-text-3: rgba(44, 62, 80, 0.56);
-}
-
-.dark {
-  --vp-c-text-1: rgba(255, 255, 255, 0.87);
-  --vp-c-text-2: rgba(235, 235, 235, 0.6);
-  --vp-c-text-3: rgba(235, 235, 235, 0.38);
 }
 
 /**
