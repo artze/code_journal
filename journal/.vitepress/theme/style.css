@@ -146,7 +146,7 @@
 :root {
   --vp-code-color: #476582;
 
-  --vp-code-block-color: #a6accd;
+  --vp-code-block-color: rgba(255, 255, 255, 0.87);
   --vp-code-block-bg: #292d3e;
 
   --vp-code-lang-color: rgba(235, 235, 235, 0.38);
@@ -161,6 +161,7 @@
 .dark {
   --vp-code-color: #aac8e4;
 
+  --vp-code-block-color: #aac8e4;
   --vp-code-block-bg: var(--vp-c-bg-alt);
 
   --vp-code-copy-code-border-color: var(--vp-c-bg-alt);
