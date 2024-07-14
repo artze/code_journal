@@ -17,3 +17,4 @@ A code journal made with Vuepress.
   - [x] block code text color
   - [x] block code bg color
   - [ ] PostListItem colors
+- [ ] Upgrade node in github actions and host
