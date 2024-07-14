@@ -36,6 +36,12 @@
   --vp-c-lime-green-2: #48be89;
   --vp-c-lime-green-3: #5bc595;
   --vp-c-lime-green-soft: rgba(26, 211, 128, 0.14);
+
+  --vp-c-gray-soft: #f1f1f1;
+}
+
+.dark {
+  --vp-c-gray-soft: #2f2f2f;
 }
 
 /**
