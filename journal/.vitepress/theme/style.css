@@ -170,6 +170,13 @@
   --vp-code-copy-code-hover-bg: #2f2f2f;
 }
 
+.vp-doc h1 > code,
+.vp-doc h2 > code,
+.vp-doc h3 > code,
+.vp-doc h4 > code {
+  color: var(--vp-code-color);
+}
+
 /**
  * Component: Button
  * -------------------------------------------------------------------------- */
