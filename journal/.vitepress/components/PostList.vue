@@ -53,8 +53,7 @@ a.post-list-item__link {
 }
 
 .post-list-item__container {
-  /* TODO use variable for border color */
-  border: 1px solid lightgray;
+  border: 1px solid var(--vp-c-border);
   margin: 1em 0;
   padding: 0 1em;
 }
