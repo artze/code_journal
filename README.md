@@ -20,7 +20,7 @@ A code journal made with Vuepress.
   - [x] PostListItem colors
 - [ ] Add PostDate and PostTags in each page
 - [ ] Upgrade node
-  - [ ] in github actions
+  - [x] in github actions
   - [ ] in host
 - [ ] Add goatcounter script
 - [ ] SEO plugin (maybe)
