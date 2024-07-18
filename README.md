@@ -19,9 +19,9 @@ A code journal made with Vuepress.
   - [x] inline code text color in header
   - [x] PostListItem colors
 - [ ] Add PostDate and PostTags in each page
-- [ ] Upgrade node
+- [x] Upgrade node
   - [x] in github actions
-  - [ ] in host
+  - [x] in host
 - [ ] Add goatcounter script
 - [ ] SEO plugin (maybe)
 
