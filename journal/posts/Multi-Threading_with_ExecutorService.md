@@ -7,9 +7,9 @@ timestamp: 1537500000000
 
 ## Multi-Threading with Executor Service
 
-* ExecutorServce: A service that manages a pool of threads — creates them, assigns tasks to them, queues tasks to newly available threads and shutsdown the pool at the end
+- ExecutorServce: A service that manages a pool of threads — creates them, assigns tasks to them, queues tasks to newly available threads and shutsdown the pool at the end
 
-* Runnables: holds tasks that will be fed into the pool of threads
+- Runnables: holds tasks that will be fed into the pool of threads
 
 ```java
 public void runMultiThread() {
@@ -61,4 +61,4 @@ public void runMultiThread() {
 // Timeout ended for Task2
 // Timeout ended for Task3
 // Timeout ended for Task1
-````
+```

@@ -18,4 +18,4 @@ Promises.all(promises)
     // result here will be an array of results in the same order as promises arr
     res.status(200).json(result);
   }
-````
+```

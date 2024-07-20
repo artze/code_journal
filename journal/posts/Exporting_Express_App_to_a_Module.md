@@ -15,10 +15,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-const app = module.exports = express();
-
+const app = (module.exports = express());
 
 // someModule.js
 const app = require('../path/to/app.js');
 someFunction(app);
-````
+```
