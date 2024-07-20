@@ -42,6 +42,3 @@ asyncFunction(function(err, data) {
   console.log(data);
 })
 ```
-
-<PostDate />
-<PageTags />

@@ -31,6 +31,3 @@ With this, we can easily duplicate files and add `.bak` to the backup file name 
 ```sh
 cp example_file{,.bak}
 ```
-
-<PostDate />
-<PageTags />

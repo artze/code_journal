@@ -11,6 +11,3 @@ See this article: <https://nodejs.org/en/docs/guides/simple-profiling/>. Some no
 
 - Benchmarking HTTP APIs with ApacheBench
 - Comparison of latency between synchronous (blocking) and asynchronous implementations
-
-<PostDate />
-<PageTags />

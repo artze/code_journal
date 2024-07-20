@@ -36,6 +36,3 @@ Related links:
 
 - <https://kb.mozillazine.org/User.js_file>
 - <https://unix.stackexchange.com/questions/727999/which-files-can-be-used-to-configure-firefox-on-linux-mint-21-where-are-they-st>
-
-<PostDate />
-<PageTags />

@@ -85,6 +85,3 @@ file1  file2  file3
 [paul@RHELv4u3 gen]$ ls file[a-z][a-z][0-9]*
 fileab2
 ```
-
-<PostDate />
-<PageTags />

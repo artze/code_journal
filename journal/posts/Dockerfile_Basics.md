@@ -42,6 +42,3 @@ CMD ["node", "server"]
 ```
 
 With the file ready, you could create a Docker image (in your directory with Dockerfile) `docker build -t <insert img name>` .
-
-<PostDate />
-<PageTags />

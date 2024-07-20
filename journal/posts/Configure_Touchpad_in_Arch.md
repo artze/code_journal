@@ -27,6 +27,3 @@ EndSection
 The `Option` parameters are the ones responsible in customizing touchpad behavior. The other parameters can be copied over from the generic configurations in `/usr/share/X11/xorg.conf.d/40-libinput.conf`.
 
 More on these configurations on [archwiki](https://wiki.archlinux.org/title/libinput#Configuration)
-
-<PostDate />
-<PageTags />

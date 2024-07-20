@@ -68,6 +68,3 @@ EOF
 ```
 
 `>` overwrites the file whilst `>>` appends to file.
-
-<PostDate />
-<PageTags />

@@ -152,6 +152,3 @@ async function asyncOperation() {
 // AFTER 5 SECONDS
 // 'sleep completed'
 ```
-
-<PostDate />
-<PageTags />

@@ -14,6 +14,3 @@ div {
   margin-left: auto
 }
 ```
-
-<PostDate />
-<PageTags />

@@ -11,6 +11,3 @@ We can use `before` and `after` hooks outside of describe blocks. These are root
 
 Root-level hooks can be located in any test file.
 
-
-<PostDate />
-<PageTags />

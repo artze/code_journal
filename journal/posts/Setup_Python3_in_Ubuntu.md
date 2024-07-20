@@ -34,6 +34,3 @@ You should see a (my_env) prefix on the console. Any packages installed with thi
 `pip3 install requests`
 
 To get out of the environment, simply enter `deactivate`
-
-<PostDate />
-<PageTags />

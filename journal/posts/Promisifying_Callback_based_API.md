@@ -40,6 +40,3 @@ What’s happening:
 * `[].slice.call(arguments)` is required as `arguments` is an array-like object that does NOT inherit most array methods like slice
 * The function pushes a special callback as the last argument. The callback simply rejects promise if an error is present. Otherwise, the callback resolves promise either with a single result or an array of results. (note that the `arguments` within callback refers to the parameters passed into callback, e.g. `err`, `result`)
 * `callbackBasedApi` is called with the argument list that was built earlier
-
-<PostDate />
-<PageTags />

@@ -62,6 +62,3 @@ asyncFn() {
 ```
 
 Throwing an error in the `.then()` block will trigger the error handler within the `catch()` block. With an error thrown, the `.then()` method will return a Promise that inherits the error, and trigger the error handler within the `catch()` block.
-
-<PostDate />
-<PageTags />

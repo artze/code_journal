@@ -45,6 +45,3 @@ class Book {
 Notes:
 * To reduce overhead, retrieving all books will only retrieve high level data without getting all relational data.
 * Each `Book` instance has access to relational data (`Author`) and can be called as needed.
-
-<PostDate />
-<PageTags />

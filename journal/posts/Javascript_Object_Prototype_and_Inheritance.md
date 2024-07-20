@@ -213,6 +213,3 @@ If we define object inheritance _without_ ES6 Classes, Typescript intellisense a
 
 - [MDN object prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 - [The Trouble with ES6 Classes](https://www.toptal.com/javascript/es6-class-chaos-keeps-js-developer-up)
-
-<PostDate />
-<PageTags />

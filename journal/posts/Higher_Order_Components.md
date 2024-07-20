@@ -70,6 +70,3 @@ const AdminInfo = withAdminWarning(Info);
 
 ReactDOM.render(<AdminInfo isAdmin={false} info="Secret data here" />, document.getElementById('root'));
 ```
-
-<PostDate />
-<PageTags />

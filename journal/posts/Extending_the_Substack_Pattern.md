@@ -35,6 +35,3 @@ logger.verbose('This is a verbose message');
 
 This pattern is great to give emphasis on a single functionality whilst still providing secondary features that are less visible.
 
-
-<PostDate />
-<PageTags />

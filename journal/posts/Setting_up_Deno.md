@@ -53,6 +53,3 @@ See compatibility table [here](https://deno.com/versions.json)
 [Official Deno plugin](https://marketplace.visualstudio.com/items?itemName=denoland.vscode-deno)
 
 The plugin needs to be enabled at project level, because not all Javascript/Typescript projects use Deno. Do this with `Ctrl + Shift + P` and run `Deno: Initialize Workspace Configuration`.
-
-<PostDate />
-<PageTags />

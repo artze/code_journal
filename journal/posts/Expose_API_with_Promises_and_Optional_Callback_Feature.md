@@ -33,6 +33,3 @@ function asyncFn(arg1, arg2, callback) {
 Some notes:
 * The async API checks presence of callback function before calling it
 * A promise is always created and completed regardless if users opt for the callback option.
-
-<PostDate />
-<PageTags />

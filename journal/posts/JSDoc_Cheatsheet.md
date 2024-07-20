@@ -51,6 +51,3 @@ Limit string values
 */
 function something(aThing) {}
 ```
-
-<PostDate />
-<PageTags />

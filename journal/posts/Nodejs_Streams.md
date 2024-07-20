@@ -370,6 +370,3 @@ Some libraries are available to help us:
 ## Other Reading
 
 - substack's [stream-handbook](https://github.com/substack/stream-handbook)
-
-<PostDate />
-<PageTags />

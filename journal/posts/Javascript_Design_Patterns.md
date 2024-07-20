@@ -1060,6 +1060,3 @@ setInterval(() => {
 
 ## Command Pattern
 This pattern seems unecessary at this point in time and will be covered later.
-
-<PostDate />
-<PageTags />

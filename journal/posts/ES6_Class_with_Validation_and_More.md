@@ -117,6 +117,3 @@ Why I did it this way:
 * The types of validations implemented are easily visible and re-configurable. It is easy to see what validations are applied to each field, and any changes can be done by simply adding or removing elements in the validators array in each setter method.
 * The validation implementation details are outsourced to another module so that the User class would contain only details that describe its characteristics and behavior, nothing more.
 * Let’s say I have an array of object instances with mixed types (User, Product etc.), all required to be serialized before sending them over a POST request. I could simply call serializeToArray() on each instance and the details of serialization will be taken care of by its respective method definitions.
-
-<PostDate />
-<PageTags />

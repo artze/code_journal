@@ -69,6 +69,3 @@ console.log('Main context end')
 // 'Main context end' is printed immediately without delay
 // i.e. Blocking code is run asynchronously without blocking the main context
 ```
-
-<PostDate />
-<PageTags />

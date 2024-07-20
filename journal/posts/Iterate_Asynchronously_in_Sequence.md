@@ -28,6 +28,3 @@ function finish() {
 
 iterate(0); // initiate series of async task execution
 ```
-
-<PostDate />
-<PageTags />

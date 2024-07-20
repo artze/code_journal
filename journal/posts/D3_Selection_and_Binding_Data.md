@@ -28,6 +28,3 @@ At the parts `selectAll().data()`, d3 selects all h2 elements (there could be no
 (We’re now in the `data()` iteration). When it reaches `enter()` d3 compares the current selected element (in this case h2) with the current item in the dataset. If the current selected element is missing, it runs the succeeding code and appends a new h2 element. Else, it skips to the next iteration.
 
 So, if we started off with a single existing h2 element `<h2>Old Title</h2>` d3 would generate four h2 elements with the text ‘New Title’.
-
-<PostDate />
-<PageTags />

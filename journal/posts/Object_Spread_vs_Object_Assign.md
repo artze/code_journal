@@ -160,6 +160,3 @@ const spread = {
 ## References
 
 - [MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals)
-
-<PostDate />
-<PageTags />

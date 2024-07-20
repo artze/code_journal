@@ -136,6 +136,3 @@ Multiplexing is similar to merging streams but instead of simply joining streams
 
 Conceptually, the implementation generally involves having each chunk of data carry information about its source stream (e.g. source stream ID).
 For binary data, this can be done by wrapping each data chunk into packets, with packet headers carrying information about its source stream. For object streams, this can be done by simply adding a property in the object that specifies its source stream.
-
-<PostDate />
-<PageTags />

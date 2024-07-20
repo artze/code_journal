@@ -100,6 +100,3 @@ done
 # foo
 # bar
 ```
-
-<PostDate />
-<PageTags />

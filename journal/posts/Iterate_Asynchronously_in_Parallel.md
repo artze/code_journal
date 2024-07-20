@@ -30,6 +30,3 @@ function finish() {
     // all tasks completed
 }
 ```
-
-<PostDate />
-<PageTags />

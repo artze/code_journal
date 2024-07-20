@@ -39,6 +39,3 @@ What’s happening:
 * `Promise.resolve()` creates a promise that resolves without any conditions simply to begin the promise chain
 * The `forEach` loop calls `then()` on the previous promise in each iteration to create a promise chain
 * At the very end, the callback within the final `then()` function triggers when the last promise-based task completes.
-
-<PostDate />
-<PageTags />

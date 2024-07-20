@@ -17,7 +17,3 @@ div {
   width: fit-content;
 }
 ```
-
-
-<PostDate />
-<PageTags />

@@ -63,6 +63,3 @@ fs.createReadStream(file)
 ### Notes on Streaming
 
 In considering performance, you want to make sure that you’re not producing too many chunks . The more “chunking” you do, the more overhead that exists in both producing the chunks and parsing the chunks. Furthermore, it also results in more executions of buffering functions if the receiver can’t make immediate use of the chunks. Chunking isn’t always the right answer, it adds extra complexity on the recipient. So if you’re sending small units of things that won’t gain much from streaming, don’t bother with it!
-
-<PostDate />
-<PageTags />

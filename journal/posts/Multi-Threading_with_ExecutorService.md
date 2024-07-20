@@ -62,5 +62,3 @@ public void runMultiThread() {
 // Timeout ended for Task3
 // Timeout ended for Task1
 ````
-<PostDate />
-<PageTags />

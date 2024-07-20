@@ -31,6 +31,3 @@ it('should work well with async/await', async function() {
   await expect(asyncFn()).to.be.rejectedWith(Error);
 })
 ```
-
-<PostDate />
-<PageTags />

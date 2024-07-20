@@ -39,6 +39,3 @@ Sources:
 <https://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test>
 
 <https://codeahoy.com/2016/07/05/unit-integration-and-end-to-end-tests-finding-the-right-balance/>
-
-<PostDate />
-<PageTags />

@@ -90,6 +90,3 @@ class ChildComponent extends Component {
   }
 }
 ```
-
-<PostDate />
-<PageTags />

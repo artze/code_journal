@@ -16,6 +16,3 @@ Gamma parameter:
 * determines how far the influence of a single training data reaches.
 * With a Larger number, the training data close to decision boundary would hold more weight, thereby ignoring far-away data points in constructing decision boundary. (risk of ‘overfitting’)
 * With a Smaller number, far-away data points would be considered in the construction of decision boundary. (better at generalizing to test sets)
-
-<PostDate />
-<PageTags />

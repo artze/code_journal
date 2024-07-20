@@ -40,6 +40,3 @@ a quick brown fox jumps over the lazy dog
 append file with heredoc
 EOF
 ```
-
-<PostDate />
-<PageTags />

@@ -22,6 +22,3 @@ const app = module.exports = express();
 const app = require('../path/to/app.js');
 someFunction(app);
 ````
-
-<PostDate />
-<PageTags />

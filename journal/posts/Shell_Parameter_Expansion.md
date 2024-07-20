@@ -89,6 +89,3 @@ temp_env=${!ENV_NAME}
 echo ${!temp_env}
 # Outputs "foobar"
 ```
-
-<PostDate />
-<PageTags />

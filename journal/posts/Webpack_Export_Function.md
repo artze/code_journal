@@ -20,6 +20,3 @@ module.exports = (env) => {
 ```
 
 Run webpack -p --env production to build files for production. It is necessary to use the --env production option to allow the env argument (within webpack.config.js) to work
-
-<PostDate />
-<PageTags />

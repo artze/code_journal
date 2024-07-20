@@ -18,6 +18,3 @@ process.on('uncaughtException', function(err){
 
 It’s important to understand that an uncaught exception leaves the application in a state that is not guaranteed to be consistent, which can lead to unforeseeable problems. That’s why it is always advised, especially in production, to exit anyway from the application after an uncaught exception is received.
 
-
-<PostDate />
-<PageTags />

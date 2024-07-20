@@ -158,6 +158,3 @@ Generally, pure Functional Programming has a steeper learning curve and it can b
 OOP approach works great if we are trying to model real world things (think ‘nouns’) and when object characteristics along with their classifications are clear in the beginning. Generally, OOP shines when trying to represent data models such as Users, Accounts, Products etc. in an application.
 
 When the task at hand is of a procedural nature, or involves assembling together a set of actions (think ‘verbs’) like data processing, the Functional approach could work well. In the context of web applications, services like route handling or data analytics would be better left with the Functional approach (although they might not be purely Functional Programming as they are not completely without side-effects).
-
-<PostDate />
-<PageTags />

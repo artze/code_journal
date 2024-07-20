@@ -223,6 +223,3 @@ function insertionSort(array) {
   return array;
 }
 ```
-
-<PostDate />
-<PageTags />

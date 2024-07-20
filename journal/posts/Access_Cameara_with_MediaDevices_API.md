@@ -134,6 +134,3 @@ A crude implementation of switching cameras (back vs front in mobile):
 </body>
 </html>
 ```
-
-<PostDate />
-<PageTags />

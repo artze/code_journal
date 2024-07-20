@@ -19,6 +19,3 @@ Promises.all(promises)
     res.status(200).json(result);
   }
 ````
-
-<PostDate />
-<PageTags />

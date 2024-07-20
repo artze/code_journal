@@ -100,6 +100,3 @@ input="abcdfoobarefgh"
 
 [[ $input = "abcd"* ]] && echo "true" # Checks if string is prefixed with 'abcd'
 ```
-
-<PostDate />
-<PageTags />

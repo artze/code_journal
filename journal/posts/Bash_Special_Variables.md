@@ -63,6 +63,3 @@ main "$@"
 ```
 
 When `$@` is wrapped in double-quotes, the space in "john smith" is preserved; otherwise, *all* spaces will serve as delimeter between arguments.
-
-<PostDate />
-<PageTags />

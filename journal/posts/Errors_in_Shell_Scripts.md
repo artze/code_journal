@@ -115,6 +115,3 @@ By default, the exit status of the entire pipeline will just be that of the last
 ## Error Handling
 <https://stackoverflow.com/questions/64786/error-handling-in-bash>
 <https://stackoverflow.com/questions/30078281/raise-error-in-a-bash-script/50265513#50265513>
-
-<PostDate />
-<PageTags />

@@ -39,6 +39,3 @@ knex.raw("SELECT VERSION()")
 
 module.exports = knex;
 ```
-
-<PostDate />
-<PageTags />

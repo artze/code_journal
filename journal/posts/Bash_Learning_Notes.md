@@ -392,6 +392,3 @@ Related links:
 - <https://stackoverflow.com/questions/1521462/looping-through-the-content-of-a-file-in-bash>
 - <https://unix.stackexchange.com/questions/18886/why-is-while-ifs-read-used-so-often-instead-of-ifs-while-read>
 - <https://stackoverflow.com/questions/26479562/what-does-ifs-do-in-this-bash-loop-cat-file-while-ifs-read-r-line-do>
-
-<PostDate />
-<PageTags />

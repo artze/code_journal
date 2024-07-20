@@ -82,6 +82,3 @@ const mockedSomeClass = mocked(SomeClass, true)
 // mock return value of class instance method
 mockedSomeClass.prototype.methodToMock = jest.fn().mockReturnValue('return me')
 ```
-
-<PostDate />
-<PageTags />

@@ -268,6 +268,3 @@ module.exports = LimitedParallelStream;
 One approach to have ordered parallel execution is to sort processed/transformed data so that it follows the same order in which they are received.
 
 This technique involves the use of buffer to reorder chunks while they are emitted by each running task. An npm can be used for this purpose - `through2-parallel`
-
-<PostDate />
-<PageTags />

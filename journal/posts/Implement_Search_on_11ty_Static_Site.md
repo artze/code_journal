@@ -65,6 +65,3 @@ At the end of all this, the search index is served as a serialized JSON format. 
 ## Implement User Input for Searching Pages
 
 Coming soon
-
-<PostDate />
-<PageTags />

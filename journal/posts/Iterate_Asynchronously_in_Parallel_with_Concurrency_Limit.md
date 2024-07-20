@@ -68,6 +68,3 @@ const downloadTask = new TaskQueue(2);
 downloadTask.pushTask(task1)
 downloadTask.pushTask(task2)
 ```
-
-<PostDate />
-<PageTags />

@@ -48,6 +48,3 @@ module.exports = {
 * After which, (within /pm2-config) you could run pm2 start ecosystem.config.js to get PM2 to run your app, and add it into its process list.
 
 Note: within ecosystem.config.js the apps array can hold multiple objects. If you have multiple nodejs apps, you could place each within the array. Running pm2 start ecosystem.config.js will get pm2 to run all apps listed in the array.
-
-<PostDate />
-<PageTags />

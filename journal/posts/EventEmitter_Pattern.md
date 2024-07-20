@@ -78,6 +78,3 @@ function logWhenSuccessful() {
 
 lowWhenSuccessful();
 ```
-
-<PostDate />
-<PageTags />
