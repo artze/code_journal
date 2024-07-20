@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "docs:dev": "vitepress dev journal",
-    "docs:build": "vitepress build journal",
-    "docs:preview": "vitepress preview journal",
+    "dev": "vitepress dev journal",
+    "build": "vitepress build journal",
+    "preview": "vitepress preview journal",
     "format": "prettier \"journal/**/*.md\" --write"
   },
   "devDependencies": {
