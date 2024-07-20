@@ -7,6 +7,12 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
+    lastUpdated: {
+      formatOptions: { dateStyle: 'medium' },
+    },
+  },
+  markdown: {
+    theme: 'github-dark',
   },
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
@@ -29,7 +35,4 @@ export default defineConfig({
       },
     ],
   ],
-  markdown: {
-    theme: 'github-dark',
-  },
 });
