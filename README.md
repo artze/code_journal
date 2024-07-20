@@ -18,15 +18,18 @@ A code journal made with Vuepress.
   - [x] block code bg color
   - [x] inline code text color in header
   - [x] PostListItem colors
-- [ ] Add PostDate and PostTags in each page
 - [x] Upgrade node
   - [x] in github actions
   - [x] in host
+- [ ] Remove `PostDate` and `PageTags` components from each .md
+- [ ] Update `add_post.sh`
 - [ ] Add goatcounter script
 - [ ] SEO plugin (maybe)
+- [ ] Adjust package.json scripts
 
 ## TODO Later
 
 - [ ] Tag list page
+- [ ] List tags of each page in `doc-after slot`
 - [ ] PostList page for each tag
 - [ ] Delete vuepress_files
