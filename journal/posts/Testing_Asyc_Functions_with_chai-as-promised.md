@@ -10,24 +10,25 @@ timestamp: 1550905261000
 Set up chai-as-promised:
 
 ```js
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
+const chai = require('chai');
+const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
-const expect = chai.expect
+const expect = chai.expect;
 ```
 
 General syntax:
-```js
-it('Promise should be rejected with CustomError', function() {
-  return expect(asyncFn()).to.be.rejectedWith(CustomError)
-})
 
-it('Promise should pass', function() {
-  return expect(asyncFn()).to.be.fulfilled
-})
+```js
+it('Promise should be rejected with CustomError', function () {
+  return expect(asyncFn()).to.be.rejectedWith(CustomError);
+});
+
+it('Promise should pass', function () {
+  return expect(asyncFn()).to.be.fulfilled;
+});
 
 // async-await alternative syntax
-it('should work well with async/await', async function() {
+it('should work well with async/await', async function () {
   await expect(asyncFn()).to.be.rejectedWith(Error);
-})
+});
 ```

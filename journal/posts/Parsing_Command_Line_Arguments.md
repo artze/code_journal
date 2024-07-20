@@ -6,12 +6,13 @@ timestamp: 1570080424118
 ---
 
 ## Parsing Command Line Arguments
+
 `getopts` command can be used to parse single character options e.g. `-a` or `-al`
 
 For long options with arguments e.g. `--env dev --db test`, see script below:
 
 ```sh
-#!/bin/bash 
+#!/bin/bash
 while [ "${1:-}" != "" ]; do
   case "$1" in
     "--env")

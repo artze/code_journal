@@ -23,25 +23,25 @@ module.exports = (env) => {
         {
           loader: 'babel-loader',
           test: /\.js$/,
-          exclude: /node_modules/
+          exclude: /node_modules/,
         },
         {
           // extract-text-plugin will extract all text from .scss files and move them into styles.css
           test: /\.s?css$/,
           use: CSSExtract.extract({
-            use: ['css-loader', 'sass-loader']
-          })
-        }
-      ]
+            use: ['css-loader', 'sass-loader'],
+          }),
+        },
+      ],
     },
     // Add extract-text plugin instance here too
     plugins: [CSSExtract],
     devtool: isProduction ? 'source-map' : 'cheap-module-eval-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true
-    }
-  }
+      historyApiFallback: true,
+    },
+  };
 };
 ```
 
@@ -59,40 +59,40 @@ module.exports = (env) => {
   return {
     module: {
       rules: [
-          {
-              loader: 'babel-loader',
-              test: /\.js$/,
-              exclude: /node_modules/
-          },
-          {
-              test: /\.s?css$/,
-              use: CSSExtract.extract({
-                  // Enable sourceMaps in each loader
-                  use: [
-                      {
-                          loader: 'css-loader',
-                          options: {
-                              sourceMap: true
-                          }
-                      },
-                      {
-                          loader: 'sass-loader',
-                          options: {
-                              sourceMap: true
-                          }
-                      }
-                  ]
-              })
-          }
-      ]
+        {
+          loader: 'babel-loader',
+          test: /\.js$/,
+          exclude: /node_modules/,
+        },
+        {
+          test: /\.s?css$/,
+          use: CSSExtract.extract({
+            // Enable sourceMaps in each loader
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                },
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true,
+                },
+              },
+            ],
+          }),
+        },
+      ],
     },
     plugins: [CSSExtract],
     // use inline-source-map here to allow css source maps to work (slower than cheap-module-eval-source-map)
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true
-    }
-  }
+      historyApiFallback: true,
+    },
+  };
 };
 ```

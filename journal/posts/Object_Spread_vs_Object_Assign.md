@@ -144,7 +144,7 @@ const objectAssign = Object.assign(
       console.log(val);
     },
   },
-  { foo: 1 }
+  { foo: 1 },
 );
 // Logs "1"; objectAssign.foo is still the original setter
 

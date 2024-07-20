@@ -35,5 +35,6 @@ echo "copying operation complete"
 ```
 
 Notes:
-* First two lines to initialize nvm related variables to enable npm command to work
-* At the very end, replace files in /www from which nginx will serve.
+
+- First two lines to initialize nvm related variables to enable npm command to work
+- At the very end, replace files in /www from which nginx will serve.

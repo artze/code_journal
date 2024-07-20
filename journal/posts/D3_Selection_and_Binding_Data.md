@@ -20,7 +20,7 @@ d3.select('body')
   .data(dataset)
   .enter()
   .append('h2')
-  .text('New Title')
+  .text('New Title');
 ```
 
 At the parts `selectAll().data()`, d3 selects all h2 elements (there could be none, there could be a few existing ones) and ‘links’ them with the dataset. The `data()` method essentially runs the succeeding code for each item in the dataset.

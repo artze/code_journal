@@ -9,7 +9,7 @@ timestamp: 1564890718325
 
 Data Access Object (DAO) is an object containing methods that retrieve data from a database or trigger database queries. Together with the idea of Lazy Loading, we could set up a pattern as follows.
 
-Imagine we have a schema with a table 'books' with fields *id*, *title* and *year*, and a separate table for 'authors'.
+Imagine we have a schema with a table 'books' with fields _id_, _title_ and _year_, and a separate table for 'authors'.
 
 ```js
 // High level books object to access a 'books' table
@@ -43,5 +43,6 @@ class Book {
 ```
 
 Notes:
-* To reduce overhead, retrieving all books will only retrieve high level data without getting all relational data.
-* Each `Book` instance has access to relational data (`Author`) and can be called as needed.
+
+- To reduce overhead, retrieving all books will only retrieve high level data without getting all relational data.
+- Each `Book` instance has access to relational data (`Author`) and can be called as needed.

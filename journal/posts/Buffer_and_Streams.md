@@ -19,14 +19,14 @@ We could look at efficiencies of each in terms of spatial efficiency and time ef
 
 #### Spatial Efficiency
 
-* Buffering becomes an issue if input data is large. Buffer size needs to be large enough to contain all input data, and its size is constrained by available memory.
-* V8 engine can only accept buffers that are no larger than \~1gb in size.
+- Buffering becomes an issue if input data is large. Buffer size needs to be large enough to contain all input data, and its size is constrained by available memory.
+- V8 engine can only accept buffers that are no larger than \~1gb in size.
 
 #### Time Efficiency
 
-* Buffering requires each stage to complete in its entirety before moving on to the next
-* Streaming allows concurrency.
-* E.g. In a program that reads, compresses and writes data, streaming allows the current chunk to be read while the previous chunk is being compressed. In the buffering approach, the compression stage could only begin when all input data is read.
+- Buffering requires each stage to complete in its entirety before moving on to the next
+- Streaming allows concurrency.
+- E.g. In a program that reads, compresses and writes data, streaming allows the current chunk to be read while the previous chunk is being compressed. In the buffering approach, the compression stage could only begin when all input data is read.
 
 ### Examples
 
@@ -35,29 +35,29 @@ Example of a program that reads a file, compresses it and writes compressed file
 Gzip with Buffer API:
 
 ```js
-const fs = require('fs')
-const zlib = require('zlib')
-const file = process.argv[2]
+const fs = require('fs');
+const zlib = require('zlib');
+const file = process.argv[2];
 
 fs.readFile(file, (err, buffer) => {
   zlib.gzip(buffer, (err, buffer) => {
-    fs.writeFile(file + '.gz', buffer, err => {
-      console.log('File successfully compressed')
-    })
-  })
-})
+    fs.writeFile(file + '.gz', buffer, (err) => {
+      console.log('File successfully compressed');
+    });
+  });
+});
 ```
 
-Gzip with streaming API: 
+Gzip with streaming API:
 
 ```js
-const fs = require('fs')
-const zlib = require('zlib')
-const file = process.argv[2]
+const fs = require('fs');
+const zlib = require('zlib');
+const file = process.argv[2];
 fs.createReadStream(file)
   .pipe(zlib.createGzip())
   .pipe(fs.createWriteStream(file + '.gz'))
-  .on('finish', () => console.log('File successfully compressed'))
+  .on('finish', () => console.log('File successfully compressed'));
 ```
 
 ### Notes on Streaming

@@ -9,31 +9,34 @@ timestamp: 1548760860000
 
 ```js
 const tasks = []; // array of async tasks
-let concurrency = 2, running = 0, completed = 0, index = 0;
+let concurrency = 2,
+  running = 0,
+  completed = 0,
+  index = 0;
 
 function next() {
-    while(running <= concurrency && index < tasks.length) {
-        task = tasks[index++];
-        task(function() {
-            // async callback: will execute when async task completes
+  while (running <= concurrency && index < tasks.length) {
+    task = tasks[index++];
+    task(function () {
+      // async callback: will execute when async task completes
 
-            // when all tasks are completed, exit function
-            if(completed === tasks.length) {
-                return finish();
-            }
+      // when all tasks are completed, exit function
+      if (completed === tasks.length) {
+        return finish();
+      }
 
-            // when there are still tasks remaining in array
-            completed++, running--;
-            next(); // trigger while loop once again
-        });
-        running++;
-    }
+      // when there are still tasks remaining in array
+      completed++, running--;
+      next(); // trigger while loop once again
+    });
+    running++;
+  }
 }
 
 next();
 
 function finish() {
-    // all tasks completed
+  // all tasks completed
 }
 ```
 
@@ -41,30 +44,30 @@ A function with a pattern above works nicely until the same function is called m
 
 ```js
 class TaskQueue {
-    constructor(concurrency) {
-        this.concurrency = concurrency;
-        this.running = 0;
-        this.queue = [];
-    }
+  constructor(concurrency) {
+    this.concurrency = concurrency;
+    this.running = 0;
+    this.queue = [];
+  }
 
-    pushTask(task) {
-        this.queue.push(task);
+  pushTask(task) {
+    this.queue.push(task);
+    this.next();
+  }
+
+  next() {
+    while (this.running <= this.concurrency && this.queue.length) {
+      const task = this.queue.shift();
+      task(function () {
+        this.running--;
         this.next();
+      });
+      this.running++;
     }
-
-    next() {
-        while(this.running <= this.concurrency && this.queue.length) {
-            const task = this.queue.shift();
-            task(function() {
-                this.running--;
-                this.next();
-            })
-            this.running++;
-        }
-    }
+  }
 }
 
 const downloadTask = new TaskQueue(2);
-downloadTask.pushTask(task1)
-downloadTask.pushTask(task2)
+downloadTask.pushTask(task1);
+downloadTask.pushTask(task2);
 ```

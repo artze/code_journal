@@ -1,7 +1,7 @@
 ---
 title: Parsing and Formatting
 description: On how to create custom parsing and formatting tools
-tags: ["programming", "code parsing"]
+tags: ['programming', 'code parsing']
 timestamp: 1624172999368
 ---
 

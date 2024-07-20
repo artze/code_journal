@@ -16,26 +16,27 @@ var knex = require('knex')({
     host: '127.0.0.1',
     user: 'xxx',
     password: 'xxx',
-    database: 'xxx'
+    database: 'xxx',
   },
   // after connection is made, set time zone to UTC
   pool: {
     afterCreate(connection, done) {
       connection.query('SET time_zone = "+00:00";', (err) => {
         done(err, connection);
-      })
-    }
-  }
-})
+      });
+    },
+  },
+});
 
 // Fetch MySql version to verify connection is successful
-knex.raw("SELECT VERSION()")
+knex
+  .raw('SELECT VERSION()')
   .then(() => {
-    console.log('DB connection established')
+    console.log('DB connection established');
   })
   .catch((err) => {
-    console.log(err)
-  })
+    console.log(err);
+  });
 
 module.exports = knex;
 ```

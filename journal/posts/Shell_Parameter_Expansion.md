@@ -16,6 +16,7 @@ There are operators that can be used with shell parameter expansion that offers 
 ```bash
 ${parameter:-word}
 ```
+
 If parameter is unset or null, the expansion of word is substituted. Otherwise, the value of parameter is substituted.
 
 +++
@@ -23,6 +24,7 @@ If parameter is unset or null, the expansion of word is substituted. Otherwise, 
 ```bash
 ${parameter:=word}
 ```
+
 If parameter is unset or null, the expansion of word is assigned to parameter. The value of parameter is then substituted. Positional parameters and special parameters may not be assigned to in this way.
 
 +++
@@ -30,6 +32,7 @@ If parameter is unset or null, the expansion of word is assigned to parameter. T
 ```bash
 ${parameter:?word}
 ```
+
 If parameter is null or unset, the expansion of word (or a message to that effect if word is not present) is written to the standard error and the shell, if it is not interactive, exits. Otherwise, the value of parameter is substituted.
 
 +++
@@ -37,7 +40,8 @@ If parameter is null or unset, the expansion of word (or a message to that effec
 ```bash
 ${parameter:+word}
 ```
-This is the opposite of `${parameter:-word}`. If parameter is null or unset, nothing is substituted, otherwise the expansion of word is substituted. 
+
+This is the opposite of `${parameter:-word}`. If parameter is null or unset, nothing is substituted, otherwise the expansion of word is substituted.
 
 ## Substring Operations
 
@@ -45,34 +49,41 @@ This is the opposite of `${parameter:-word}`. If parameter is null or unset, not
 ${parameter:offset}
 ${parameter:offset:length}
 ```
+
 These are substring operations:
+
 - `offset` is a zero-based index. Outputs substring from `offset` index onwards (inclusive) up to the end of string.
 - `length` is the desired length of substring. Outputs substring from `offset` index onwards up to the given `length`.
 
 ## String Replace
-The string replace operations *do not* mutate the parameter.
+
+The string replace operations _do not_ mutate the parameter.
 
 ```bash
 ${parameter/pattern/string}
 ```
-Replaces `pattern` (regex) in parameter with string. This replaces only the first occurrence of `pattern`. 
+
+Replaces `pattern` (regex) in parameter with string. This replaces only the first occurrence of `pattern`.
 
 ```bash
 ${parameter//pattern/string}
 ```
-Add a slash to pattern to replace *all* occurrences of `pattern`
+
+Add a slash to pattern to replace _all_ occurrences of `pattern`
 
 Example:
+
 ```bash
 ${1//[-_*]/ }
 ```
-Replaces all occurrences of either `-`, `_` or `*` with a space
 
+Replaces all occurrences of either `-`, `_` or `*` with a space
 
 More can be found [here](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html)
 
 ## Indirect Variable Expansion
-Useful when a variable stores the name of *another* variable, and we want to retrieve the value of the nested variable.
+
+Useful when a variable stores the name of _another_ variable, and we want to retrieve the value of the nested variable.
 
 ```bash
 TOKEN_NAME='foobar'

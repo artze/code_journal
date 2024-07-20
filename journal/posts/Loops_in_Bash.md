@@ -1,12 +1,14 @@
 ---
 title: Loops in Bash
-description: Walkthrough different loop syntax in Bash 
+description: Walkthrough different loop syntax in Bash
 tags: ['bash']
 timestamp: 1619879006573
 ---
 
 # Loops in Bash
+
 Resources:
+
 - <https://www.cyberciti.biz/faq/bash-for-loop>
 - <https://ryanstutorials.net/bash-scripting-tutorial/bash-loops.php>
 
@@ -28,9 +30,11 @@ done
 # def
 # ghi
 ```
+
 ### Iterate a Range of Integers
 
 Iterate using range of numbers (inclusive on both sides).
+
 ```bash
 for i in {1..3}
 do
@@ -44,6 +48,7 @@ done
 ```
 
 The ranges can go in both directions
+
 ```bash
 for i in {3..1}
 do
@@ -57,6 +62,7 @@ done
 ```
 
 Increment can be specified too (as the 3rd value in `{}`)
+
 ```bash
 for i in {1..10..2}
 do
@@ -72,7 +78,9 @@ done
 ```
 
 ### Three-expression Syntax
+
 The typical for-loop syntax is possible as well.
+
 ```bash
 for (( i=0; i<5; i++ ))
 do
@@ -88,6 +96,7 @@ done
 ```
 
 ### Iterate Results of a Sub-command
+
 ```bash
 # Let 'command' return values 'foo bar'
 

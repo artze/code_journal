@@ -11,34 +11,34 @@ A typical gotcha in throwing Errors within an Async function
 
 ```js
 function asyncFunction() {
-  setTimeout(function() {
+  setTimeout(function () {
     throw new Error();
-  }, 1000)
+  }, 1000);
 }
 
 try {
   asyncFunction();
-} catch(e) {
-  console.log('error occurred')
+} catch (e) {
+  console.log('error occurred');
 }
 ```
 
 The above will **not** work because the async callback is not executed in the same context as the try...catch block.
 
-In async contexts, it might be better to use the *callback* pattern, passing any errors as the first argument in callback:
+In async contexts, it might be better to use the _callback_ pattern, passing any errors as the first argument in callback:
 
 ```js
 function asyncFunction(callback) {
-  setTimeout(function() {
+  setTimeout(function () {
     callback(new Error());
-  }, 2000)
+  }, 2000);
 }
 
-asyncFunction(function(err, data) {
-  if(err) {
+asyncFunction(function (err, data) {
+  if (err) {
     console.log('error occurred');
     return;
   }
   console.log(data);
-})
+});
 ```

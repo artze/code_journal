@@ -11,11 +11,11 @@ timestamp: 1554868905000
 
 Tests the smallest unit of functionality, typically a method/function (e.g. given a class with a particular state, calling x method on the class should cause y to happen). Unit tests should be focused on one particular feature (e.g., calling the pop method when the stack is empty should throw an InvalidOperationException). Everything it touches should be done in memory; this means that the test code and the code under test **should not**:
 
-* Call out into other modules
-* Access the network
-* Hit a database
-* Use the file system
-* Spin up a thread
+- Call out into other modules
+- Access the network
+- Hit a database
+- Use the file system
+- Spin up a thread
 
 All dependencies should be stubbed/mocked using the appropriate techniques so you can focus on what the unit of code is doing, not what its dependencies do.
 
@@ -28,11 +28,12 @@ Integration tests build on unit tests by combining the units of code to ensure t
 Integration tests don’t necessarily prove that a complete feature works, and may be testing implementation details that users do not care about.
 
 ### End-to-end Testing
+
 Tests whether the flow of an application right from start to finish is behaving as expected by simulating real user scenarios and validating outcomes.
 
 ### Striking a Balance between Tests
-A good starting point is to have a 70/20/10 split: 70% unit tests, 20% integration tests, and 10% end-to-end tests.
 
+A good starting point is to have a 70/20/10 split: 70% unit tests, 20% integration tests, and 10% end-to-end tests.
 
 Sources:
 

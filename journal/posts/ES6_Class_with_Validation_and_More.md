@@ -88,7 +88,7 @@ class User {
     });
     if (!dataIsValid) {
       throw new InvalidInputError(
-        `Input Error: User input has incorrect \'${key}\' field`
+        `Input Error: User input has incorrect \'${key}\' field`,
       );
     }
     this[key] = value ? value : null;

@@ -52,7 +52,7 @@ function buildFunctions2() {
         return function () {
           console.log(j);
         };
-      })(i)
+      })(i),
     );
   }
   return arr;

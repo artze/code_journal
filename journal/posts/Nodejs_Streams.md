@@ -178,7 +178,7 @@ http
     const generateMore = () => {
       while (chance.bool({ likelihood: 95 })) {
         let shouldContinue = res.write(
-          chance.string({ length: 16 * 1024 - 1 })
+          chance.string({ length: 16 * 1024 - 1 }),
         );
 
         if (!shouldContinue) {

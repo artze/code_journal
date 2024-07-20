@@ -6,6 +6,7 @@ timestamp: 1537687281000
 ---
 
 ## Unix Brace Expansion
+
 Brace Expansion allows users to reiterate the same parts of a string without having to type them all out.
 
 Example:
@@ -26,6 +27,7 @@ echo a{,b,c}z
 ```
 
 ### Shorthand for Creating Backup Files
+
 With this, we can easily duplicate files and add `.bak` to the backup file name with the following:
 
 ```sh

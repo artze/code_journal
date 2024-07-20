@@ -11,7 +11,7 @@ Besides handling I/O, streams could be used as an approach to elegant programmin
 
 ### Sequential Execution
 
-By default, streams handle data in sequence. For example, a `_transfrom()` function of a Transform stream will never be invoked again until the previous invocation completes by executing `callback()`. 
+By default, streams handle data in sequence. For example, a `_transfrom()` function of a Transform stream will never be invoked again until the previous invocation completes by executing `callback()`.
 
 In the example below `through2` is used to simplify the creation of Transform streams and `from2-array` is used to create a Readable stream from an array of objects.
 
@@ -22,21 +22,26 @@ const fs = require('fs');
 
 const concatFiles = (destination, files, callback) => {
   const destStream = fs.createWriteStream(destination);
-  fromArray.obj(files)                                    // [1]
-    .pipe(through.obj((file, encoding, done) => {         // [2]
-      const src = fs.createReadStream(file);              // [3]
-      src.pipe(destStream, { end: false });               // [4]
-      src.on('end', done);                                // [5]
-    }))
-    .on('finish', () => {                                 // [6]
+  fromArray
+    .obj(files) // [1]
+    .pipe(
+      through.obj((file, encoding, done) => {
+        // [2]
+        const src = fs.createReadStream(file); // [3]
+        src.pipe(destStream, { end: false }); // [4]
+        src.on('end', done); // [5]
+      }),
+    )
+    .on('finish', () => {
+      // [6]
       destStream.end();
       callback();
-    })
-}
+    });
+};
 
 concatFiles(process.argv[2], process.argv.slice(3), () => {
   console.log('Files concatenated successfully');
-})
+});
 
 // This script combines the content of multiple files and
 // combines them into a destination file.
@@ -67,14 +72,14 @@ concatFiles(process.argv[2], process.argv.slice(3), () => {
 //     the Readable stream (of the iterated file) ends.
 //
 // [5] When the Readable stream of iterated file reaches
-//     an end, `done()` is called, and the _transform() 
-//     function is invoked again with the next file in 
+//     an end, `done()` is called, and the _transform()
+//     function is invoked again with the next file in
 //     iteration.
 //
 // [6] The `finish` listener is attached to the Transform
-//     stream, which operates on the level of the main 
+//     stream, which operates on the level of the main
 //     stream. At the end of the file iteration, the
-//     Readable stream (`fromArray`) reaches an end, thus 
+//     Readable stream (`fromArray`) reaches an end, thus
 //     triggering the 'finish' event of the Writable stream
 //     (`through`) - which is the default behaviour of
 //     `pipe()`.
@@ -90,7 +95,8 @@ Implementation example that defines a generic Transform stream which executes tr
 const stream = require('stream');
 
 class ParallelStream extends stream.Transform {
-  constructor(userTransform) {                                   // [1]
+  constructor(userTransform) {
+    // [1]
     super({ objectMode: true });
     this.userTransform = userTransform;
     this.running = 0;
@@ -98,17 +104,19 @@ class ParallelStream extends stream.Transform {
   }
 
   _transform(chunk, enc, done) {
-    this.running++
-    this.userTransform(                                          // [2]
+    this.running++;
+    this.userTransform(
+      // [2]
       chunk,
       enc,
       this.push.bind(this),
-      this._onComplete.bind(this)
+      this._onComplete.bind(this),
     );
     done();
   }
 
-  _flush(done) {                                                 // [3]
+  _flush(done) {
+    // [3]
     if (this.running > 0) {
       this.terminateCallback = done;
     } else {
@@ -116,7 +124,8 @@ class ParallelStream extends stream.Transform {
     }
   }
 
-  _onComplete(err) {                                             // [4]
+  _onComplete(err) {
+    // [4]
     this.running--;
     if (err) {
       return this.emit('error', err);
@@ -125,7 +134,6 @@ class ParallelStream extends stream.Transform {
       this.terminateCallback && this.terminateCallback();
     }
   }
-
 }
 
 module.exports = ParallelStream;
@@ -135,7 +143,7 @@ module.exports = ParallelStream;
 //
 // [2] The `userTransform()`` function is invoked. `done()` is called
 //     immediately without waiting for `userTransform()` to complete. This is
-//     where the 'trick' for parallel execution lies: we notify that the 
+//     where the 'trick' for parallel execution lies: we notify that the
 //     current `_transform()` function is complete, thereby accepting the next
 //     chunk of data without waiting for `userTransform()`.
 //
@@ -143,13 +151,13 @@ module.exports = ParallelStream;
 //     - `chunk`, `enc`` are arguments passed down from `_transform()`
 //     - `this.push.bind(this)` allows `userTransform()` to push completed data
 //       chunks to the buffer of the Readable stream (output)
-//     - `this._onComplete.bind(this)` allows `userTransform()` to invoke the 
+//     - `this._onComplete.bind(this)` allows `userTransform()` to invoke the
 //       special callback we created. This special callback is called every
 //       time `userTransform()` completes.
 //
 // [3] The `_flush()` method is invoked just before the stream terminates.
 //     The `done` callback (passed in internally by stream.Transform) essentially
-//     terminates the stream by emitting a `finish` event. 
+//     terminates the stream by emitting a `finish` event.
 //
 //     By suspending the `done()` callback when running tasks are still present,
 //     the stream is kept open. Instead, we let the special `_onComplete()`
@@ -157,15 +165,15 @@ module.exports = ParallelStream;
 //     is called.
 //
 // [4] This is a special callback we created and is invoked at the end of each
-//     `userTransform()` async task. It is here that we check if all running 
+//     `userTransform()` async task. It is here that we check if all running
 //     tasks are completed before finally terminating the stream.
 ```
 
 We can see an example use case of `ParallelStream` by creating a URL status monitoring application, which:
 
-* Reads from a text file containing a list of URLs (seperated by newline) 
-* Sends a request to each URL
-* Outputs a file containing the list of URLs and its status ('up' or 'down')
+- Reads from a text file containing a list of URLs (seperated by newline)
+- Sends a request to each URL
+- Outputs a file containing the list of URLs and its status ('up' or 'down')
 
 ```js
 const fs = require('fs');
@@ -174,19 +182,24 @@ const split = require('split');
 const ParallelStream = require('./ParallelStream');
 
 fs.createReadStream(process.argv[2])
-  .pipe(split())                                                // [1]
-  .pipe(new ParallelStream((url, enc, push, done) => {
-    if (!url) {
-      return done()
-    }
+  .pipe(split()) // [1]
+  .pipe(
+    new ParallelStream((url, enc, push, done) => {
+      if (!url) {
+        return done();
+      }
 
-    request.head((url, (err, response) => {
-      push(url + ' is ' + (err? 'down' : 'up') + '\n');
-      done();
-    }))
-  }))
+      request.head(
+        (url,
+        (err, response) => {
+          push(url + ' is ' + (err ? 'down' : 'up') + '\n');
+          done();
+        }),
+      );
+    }),
+  )
   .pipe(fs.createWriteStream('results.txt'))
-  .on('finish', () => console.log('All urls were checked.'))
+  .on('finish', () => console.log('All urls were checked.'));
 
 // [1] `split` is a Tranform stream that ensures outputting each
 //     line on a separate chunk.
@@ -212,15 +225,16 @@ class LimitedParallelStream extends stream.Transform {
   }
 
   _transform(chunk, enc, done) {
-    this.running++
+    this.running++;
     this.userTransform(
       chunk,
       enc,
       this.push.bind(this),
-      this._onComplete.bind(this)
+      this._onComplete.bind(this),
     );
-    if (this.running < this.concurrencyLimit) {             // [1]
-      done()
+    if (this.running < this.concurrencyLimit) {
+      // [1]
+      done();
     } else {
       this.continueCallback = done;
     }
@@ -239,14 +253,13 @@ class LimitedParallelStream extends stream.Transform {
     if (err) {
       return this.emit('error', err);
     }
-    const tmpContinueCallback = this.continueCallback;      // [2]
+    const tmpContinueCallback = this.continueCallback; // [2]
     this.continueCallback = null;
     tmpContinueCallback && tmpContinueCallback();
     if (this.running === 0) {
       this.terminateCallback && this.terminateCallback();
     }
   }
-
 }
 
 module.exports = LimitedParallelStream;
@@ -258,7 +271,7 @@ module.exports = LimitedParallelStream;
 //     The `_transform()` callback is instead saved to an instance variable
 //     to be called within `_onComplete()`
 //
-// [2] At the end of each async task, `continueCallback` is invoked (if 
+// [2] At the end of each async task, `continueCallback` is invoked (if
 //     available) to allow new chunks of data to flow into the stream once
 //     again.
 ```

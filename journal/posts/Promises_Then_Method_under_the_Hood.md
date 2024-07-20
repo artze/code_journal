@@ -11,24 +11,25 @@ Behind the scenes, .then() function returns a Promise.
 
 ```js
 asyncFn()
-  .then(function(result) {
+  .then(function (result) {
     // do something with result
   })
-  .catch(function(err) {
+  .catch(function (err) {
     // do something with error
-  })
+  });
 ```
 
 What’s happening in a success case:
 
-* `asyncFn` completes and triggers `.then()`. Because it is a success case (promised resolved), the anonymous function within `.then()` is invoked.
-* `.then()` returns a Promise that inherits the fulfillment value result and proceeds to trigger `.catch()`
-* Because there is no error ( `rejected()` was never called), the error handler is not invoked. A Promise is still returned at the end, but nothing is done with it.
+- `asyncFn` completes and triggers `.then()`. Because it is a success case (promised resolved), the anonymous function within `.then()` is invoked.
+- `.then()` returns a Promise that inherits the fulfillment value result and proceeds to trigger `.catch()`
+- Because there is no error ( `rejected()` was never called), the error handler is not invoked. A Promise is still returned at the end, but nothing is done with it.
 
 What’s happneing in an error case:
-* `asyncFn` completes and triggers `.then()`. The success handler is ignored because it is a failure case.
-* `.then()` returns a Promise that inherits the rejected value (error) and proceeds to trigger `.catch()`
-* With a rejection value present, error handler is invoked. A Promise is returned at the end and nothing is done with it.
+
+- `asyncFn` completes and triggers `.then()`. The success handler is ignored because it is a failure case.
+- `.then()` returns a Promise that inherits the rejected value (error) and proceeds to trigger `.catch()`
+- With a rejection value present, error handler is invoked. A Promise is returned at the end and nothing is done with it.
 
 This characteristic allows for a few useful patterns:
 

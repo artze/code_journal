@@ -25,6 +25,7 @@ To do this:
 cd python_projects
 python3 -m venv my_env
 ```
+
 The above command will create a `my_env` directory within `python_projects`. To begin using the virtual environment:
 
 `source my_env/bin/activate`

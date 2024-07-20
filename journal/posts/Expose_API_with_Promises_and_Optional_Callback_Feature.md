@@ -11,25 +11,26 @@ The API pattern below allows users to use it as a promise or as a callback-based
 
 ```js
 function asyncFn(arg1, arg2, callback) {
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     // When error occurs
-    if(someError) {
-      const err = new Error('Invalid input')
-      if(callback) {
-        callback(err)
+    if (someError) {
+      const err = new Error('Invalid input');
+      if (callback) {
+        callback(err);
       }
-      return reject(err)
+      return reject(err);
     }
-    
+
     // No error
-    if(callback) {
-      callback(null, result); 
+    if (callback) {
+      callback(null, result);
     }
     resolve(result);
-  })
+  });
 }
 ```
 
 Some notes:
-* The async API checks presence of callback function before calling it
-* A promise is always created and completed regardless if users opt for the callback option.
+
+- The async API checks presence of callback function before calling it
+- A promise is always created and completed regardless if users opt for the callback option.

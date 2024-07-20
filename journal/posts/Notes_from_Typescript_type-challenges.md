@@ -68,7 +68,7 @@ const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const;
 typeof tuple;
 // Equals the exact array ['tesla', 'model 3', 'model X', 'model Y']
 
-type TeslaModel = typeof tuple[number];
+type TeslaModel = (typeof tuple)[number];
 // Equals the possible values, i.e. the union types 'tesla' | 'model 3' | 'model X' | 'model Y'
 ```
 
@@ -95,13 +95,13 @@ type MyExclude<T, U> = T extends U ? never : T;
 ```ts
 // Goal
 
-type X = Promise<string>
-type Y = Promise<{ field: number }>
+type X = Promise<string>;
+type Y = Promise<{ field: number }>;
 
-Awaited<X>
+Awaited<X>;
 // Awaited utility should return `string` type
 
-Awaited<Y>
+Awaited<Y>;
 // Awaited utility should return `{field: number}` type
 
 // Answer

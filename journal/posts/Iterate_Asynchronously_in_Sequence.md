@@ -11,19 +11,19 @@ timestamp: 1548764460000
 const tasks = []; // array of async tasks
 
 function iterate(index) {
-    if(index === tasks.length) {
-        return finish();
-    }
+  if (index === tasks.length) {
+    return finish();
+  }
 
-    const task = tasks[index];
-    task(function() {
-        // async callback: will execute when async task completes
-        iterate(index + 1);
-    });
+  const task = tasks[index];
+  task(function () {
+    // async callback: will execute when async task completes
+    iterate(index + 1);
+  });
 }
 
 function finish() {
-    // iteration completed
+  // iteration completed
 }
 
 iterate(0); // initiate series of async task execution

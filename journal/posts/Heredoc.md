@@ -6,9 +6,11 @@ timestamp: 1622731076839
 ---
 
 # Heredoc
+
 A Here document (Heredoc) is a type of redirection that allows you to pass multiple lines of input to a command.
 
 The syntax of writing HereDoc takes the following form:
+
 ```sh
 [COMMAND] <<[-] 'DELIMITER'
   HERE-DOCUMENT
@@ -23,9 +25,11 @@ DELIMITER
 See more [here](https://linuxize.com/post/bash-heredoc)
 
 ## Examples
+
 Heredoc is most often used with the `cat` command.
 
 An example with environment variables:
+
 ```sh
 cat << EOF
 The current working directory is: $PWD
@@ -34,6 +38,7 @@ EOF
 ```
 
 Output:
+
 ```
 The current working directory is: /home/john
 You are logged in as: john
@@ -42,6 +47,7 @@ You are logged in as: john
 +++
 
 What if we enclose the delimeter with quotes?
+
 ```sh
 cat << "EOF"
 The current working directory is: $PWD
@@ -50,6 +56,7 @@ EOF
 ```
 
 Output:
+
 ```
 The current working directory is: $PWD
 You are logged in as: $(whoami)
@@ -60,6 +67,7 @@ Notice that no paramter expansion and command substitution is done by the shell
 +++
 
 Instead of displaying the output, we can redirect to file with `>` or `>>` operators:
+
 ```sh
 cat << EOF > file.txt
 The current working directory is: $PWD
