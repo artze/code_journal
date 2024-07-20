@@ -1,6 +1,6 @@
 # code_journal
 
-A code journal made with Vuepress.
+A code journal made with `vitepress`.
 
 ## TODO
 
@@ -21,11 +21,11 @@ A code journal made with Vuepress.
 - [x] Upgrade node
   - [x] in github actions
   - [x] in host
-- [ ] Remove `PostDate` and `PageTags` components from each .md
-- [ ] Update `add_post.sh`
+- [x] Remove `PostDate` and `PageTags` components from each .md
+- [x] Update `add_post.sh`
 - [ ] Add goatcounter script
 - [ ] SEO plugin (maybe)
-- [ ] Adjust package.json scripts
+- [x] Adjust package.json scripts
 
 ## TODO Later
 
