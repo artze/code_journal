@@ -1,4 +1,5 @@
 {
+  "name": "code_journal",
   "scripts": {
     "dev": "vitepress dev journal",
     "build": "vitepress build journal",
