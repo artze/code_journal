@@ -11,6 +11,10 @@ export default defineConfig({
       formatOptions: { dateStyle: 'medium' },
     },
   },
+  appearance: {
+    // @ts-expect-error not fully supported yet
+    initialValue: 'light',
+  },
   markdown: {
     theme: 'github-dark',
   },
