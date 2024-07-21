@@ -9,6 +9,3 @@ timestamp: 1680046007393
 
 Follow this guide:
 <https://www.ghacks.net/2015/03/22/how-to-disable-specific-global-hotkeys-in-windows/>
-
-<PostDate />
-<PageTags />

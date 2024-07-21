@@ -11,9 +11,6 @@ Say you have flex elements laid out within a row, and they are arranged from lef
 
 ```css
 div {
-  margin-left: auto
+  margin-left: auto;
 }
 ```
-
-<PostDate />
-<PageTags />

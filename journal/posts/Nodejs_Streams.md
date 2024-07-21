@@ -178,7 +178,7 @@ http
     const generateMore = () => {
       while (chance.bool({ likelihood: 95 })) {
         let shouldContinue = res.write(
-          chance.string({ length: 16 * 1024 - 1 })
+          chance.string({ length: 16 * 1024 - 1 }),
         );
 
         if (!shouldContinue) {
@@ -370,6 +370,3 @@ Some libraries are available to help us:
 ## Other Reading
 
 - substack's [stream-handbook](https://github.com/substack/stream-handbook)
-
-<PostDate />
-<PageTags />

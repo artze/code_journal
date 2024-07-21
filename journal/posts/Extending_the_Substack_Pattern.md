@@ -10,7 +10,7 @@ timestamp: 1548145272000
 Consider a common module.exports pattern below:
 
 ```js
-module.exports = function(message) {
+module.exports = function (message) {
   console.log('info: ' + message);
 };
 ```
@@ -20,7 +20,7 @@ A possible extension of this pattern is using the exported function as namespace
 Extending the Substack Pattern:
 
 ```js
-module.exports.verbose = function(message) {
+module.exports.verbose = function (message) {
   console.log('verbose: ' + message);
 };
 ```
@@ -34,7 +34,3 @@ logger.verbose('This is a verbose message');
 ```
 
 This pattern is great to give emphasis on a single functionality whilst still providing secondary features that are less visible.
-
-
-<PostDate />
-<PageTags />

@@ -1,2 +1,5 @@
 node_modules
-journal/.vuepress/dist
+journal/.vitepress/cache
+journal/.vitepress/dist
+# TODO remove
+vuepress_files

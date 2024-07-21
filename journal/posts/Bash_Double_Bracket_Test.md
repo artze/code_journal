@@ -6,12 +6,15 @@ timestamp: 1619850952418
 ---
 
 # Bash Double Bracket Test
+
 The `[` command can be used in shell scripts to test an expression. In Bash, this can be done with `[[` as well, which offers more features. However `[[` is not POSIX compliant and does not work in many shell implementations.
 
-Resources: 
+Resources:
+
 - <http://mywiki.wooledge.org/BashFAQ/031>
 
 ## Word Splitting and Glob Expansion
+
 The `[` command requires that you wrap your multi-word string variables with quotes. Without quotes, the variable will be subject to word splitting. With `[[`, word-splitting will not be performed, even without quotes.
 
 ```bash
@@ -33,13 +36,14 @@ filename="foo bar.txt"
 Similarly, variables with `*` symbol needs to be wrapped in quotes for `[` tests to prevent the shell from performing glob expansion. This isn't necessary for `[[` tests.
 
 ## Handling Special Characters
+
 For `[` tests, some characters need to be escaped as they carry special meanings. For example, `<` and `>` are redirection commands. These will need to be escaped if we want these symbols to be interpreted as comparison operators. Escaping these characters isn't necessary with `[[` tests.
 
 As string comparison operators, these symbols compare strings according to their place in the alphabetical order. `b > a` should return true as 'b' comes after 'a'.
 
 ```bash
 [ a > b ] && echo "true"
-# The above will output 'true' and a file 'b' will be created 
+# The above will output 'true' and a file 'b' will be created
 # as the redirection command '>' took effect
 
 [ a \> b ] && echo "true"
@@ -78,10 +82,10 @@ Conditional evaluation (AND, OR) works differently for `[` vs. `[[` tests. The f
 [[ $var1 = a || $var2 = b ]] && echo "true"
 ```
 
-`&&` and `||` does not work within a *single* test expression for `[` tests. They either need to be split or replaced with `-a`, `-o` operators.
-
+`&&` and `||` does not work within a _single_ test expression for `[` tests. They either need to be split or replaced with `-a`, `-o` operators.
 
 ## Regex Matching
+
 `[[` tests offer regex matching. This is not available in `[` tests.
 
 ```bash
@@ -91,6 +95,7 @@ Conditional evaluation (AND, OR) works differently for `[` vs. `[[` tests. The f
 ```
 
 ## Pattern Matching
+
 Pattern matching only works in `[[` tests, and not available in `[`. This is achieved with the use of `*` wildcard character
 
 ```bash
@@ -100,6 +105,3 @@ input="abcdfoobarefgh"
 
 [[ $input = "abcd"* ]] && echo "true" # Checks if string is prefixed with 'abcd'
 ```
-
-<PostDate />
-<PageTags />

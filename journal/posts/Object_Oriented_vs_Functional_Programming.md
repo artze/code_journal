@@ -19,22 +19,22 @@ The OOP approach would involve classes to represent different employees:
 class Director {
   constructor(name, netSalary) {
     this.name = name;
-    this.netSalary = netSalary
+    this.netSalary = netSalary;
   }
-  
+
   updateSalary(grossSalaryChange) {
-    this.netSalary = this.netSalary + (grossSalaryChange * 0.55);
+    this.netSalary = this.netSalary + grossSalaryChange * 0.55;
   }
 }
 
 class Manager {
   constructor(name, netSalary) {
     this.name = name;
-    this.netSalary = netSalary
+    this.netSalary = netSalary;
   }
-  
+
   updateSalary(grossSalaryChange) {
-    this.netSalary = this.netSalary + (grossSalaryChange * 0.65);
+    this.netSalary = this.netSalary + grossSalaryChange * 0.65;
   }
 }
 ```
@@ -44,13 +44,13 @@ Instances of these classes will then be created to represent each employee, like
 ```js
 let directorsArr = [
   new Director('Thomas', 220000),
-  new Director('Michael', 200000)
-]
+  new Director('Michael', 200000),
+];
 
 let managersArr = [
   new Manager('Robert', 100000),
-  new Manager('Sandra', 105000)
-]
+  new Manager('Sandra', 105000),
+];
 ```
 
 When the salaries change, we could simply call updateSalaryon each instance, which will update netSalary contained within each object instance. Done.
@@ -62,43 +62,50 @@ Let’s say the name and netSalary of all employees are represented like so:
 ```js
 let directorsArr = [
   ['Thomas', 220000],
-  ['Michael', 200000]
-]
+  ['Michael', 200000],
+];
 
 let managersArr = [
   ['Robert', 100000],
-  ['Sandra', 105000]
-]
+  ['Sandra', 105000],
+];
 ```
 
 The salary update operation (let’s say $2000 increase across the board) could be carried out as follows:
 
 ```js
 function updateSalaryPerEmployee(type, employee, grossSalaryChange) {
-  let updatedEmployee = employee.slice()
-  switch(type) {
+  let updatedEmployee = employee.slice();
+  switch (type) {
     case 'director':
-    updatedEmployee[1] = employee[1] + (grossSalaryChange * 0.55);
-    break;
-      
+      updatedEmployee[1] = employee[1] + grossSalaryChange * 0.55;
+      break;
+
     case 'manager':
-    updatedEmployee[1] = employee[1] + (grossSalaryChange * 0.65);
-    break;
+      updatedEmployee[1] = employee[1] + grossSalaryChange * 0.65;
+      break;
   }
   return updatedEmployee;
 }
 
 function updateSalariesOfEmployees(type, employeesArr, grossSalaryChange) {
-  return employeesArr.map(function(employee) {
-    return updateSalaryPerEmployee(type, employee, grossSalaryChange)
-  })
+  return employeesArr.map(function (employee) {
+    return updateSalaryPerEmployee(type, employee, grossSalaryChange);
+  });
 }
-
 
 // To get an updated view of employees and their net salaries
 
-let updatedDirectorsArr = updateSalariesOfEmployees('director', directorsArr, 2000);
-let updatedManagersArr = updateSalariesOfEmployees('manager', managersArr, 2000);
+let updatedDirectorsArr = updateSalariesOfEmployees(
+  'director',
+  directorsArr,
+  2000,
+);
+let updatedManagersArr = updateSalariesOfEmployees(
+  'manager',
+  managersArr,
+  2000,
+);
 
 console.log(directorsArr);
 // will output [ [ 'Thomas', 220000 ], [ 'Michael', 200000 ] ]
@@ -127,13 +134,13 @@ The strengths and weaknesses of each approach can be seen when we wish to extend
 
 Let’s say we need to add a new type of employee, Junior (with a 20% salary tax) into the picture:
 
-* In the OOP approach, we simply need to add a new class Junior and we are good to go.
-* In the Functional approach, we will need to add a case for Junior in all functions that take employee as a parameter. A cumbersome change when the application becomes complex.
+- In the OOP approach, we simply need to add a new class Junior and we are good to go.
+- In the Functional approach, we will need to add a case for Junior in all functions that take employee as a parameter. A cumbersome change when the application becomes complex.
 
 In another case, let’s say the company now has a retirement fund policy, requiring a further deduction of 10% across the board, thus altering the calculation of netSalary.
 
-* In the OOP approach, the updateSalary method will need to be modified in each class. Cumbersome.
-* In the Functional approach, only the function updateSalaryPerEmployee needs to be adjusted.
+- In the OOP approach, the updateSalary method will need to be modified in each class. Cumbersome.
+- In the Functional approach, only the function updateSalaryPerEmployee needs to be adjusted.
 
 ### OOP: Other Strengths and Weaknesses
 
@@ -158,6 +165,3 @@ Generally, pure Functional Programming has a steeper learning curve and it can b
 OOP approach works great if we are trying to model real world things (think ‘nouns’) and when object characteristics along with their classifications are clear in the beginning. Generally, OOP shines when trying to represent data models such as Users, Accounts, Products etc. in an application.
 
 When the task at hand is of a procedural nature, or involves assembling together a set of actions (think ‘verbs’) like data processing, the Functional approach could work well. In the context of web applications, services like route handling or data analytics would be better left with the Functional approach (although they might not be purely Functional Programming as they are not completely without side-effects).
-
-<PostDate />
-<PageTags />

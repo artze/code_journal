@@ -28,6 +28,3 @@ console.log(m.toString());
 ```
 
 The above will make sure that all momentjs operations are based on +8 timezone, no matter where the script is being run.
-
-<PostDate />
-<PageTags />

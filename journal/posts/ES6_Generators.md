@@ -133,6 +133,3 @@ What’s happening here:
 ## Useful Resources
 
 - [David Walsh blog post](https://davidwalsh.name/es6-generators)
-
-<PostDate />
-<PageTags />

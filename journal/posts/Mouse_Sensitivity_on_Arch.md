@@ -54,6 +54,3 @@ Notes:
 
 - Sensitivity can be adjusted with the `dpi` property
 - Archwiki says to run `logid -v` to get the name of device. `sudo` is required to get this to work.
-
-<PostDate />
-<PageTags />

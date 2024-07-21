@@ -1,7 +1,7 @@
 ---
 title: Parsing and Formatting
 description: On how to create custom parsing and formatting tools
-tags: ["programming", "code parsing"]
+tags: ['programming', 'code parsing']
 timestamp: 1624172999368
 ---
 
@@ -12,6 +12,3 @@ timestamp: 1624172999368
 [Introduction to parsing code](https://tomassetti.me/parsing-in-javascript/)
 
 [Parser building toolkit: Chevrotain](https://github.com/chevrotain/chevrotain)
-
-<PostDate />
-<PageTags />

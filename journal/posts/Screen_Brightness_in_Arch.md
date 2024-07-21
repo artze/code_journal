@@ -44,6 +44,3 @@ bindcode 233 exec ~/.config/abrightness/abrightness.sh -inc
 ## Other Notes
 
 Using `xorg-xbacklight` might be a good approach as well. See [here](https://wiki.archlinux.org/title/backlight#xbacklight). However, the `xbacklight` command did not work for my case -- after running the command, nothing happens at all (not even an error mesasge).
-
-<PostDate />
-<PageTags />

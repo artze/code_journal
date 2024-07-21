@@ -15,21 +15,18 @@ timestamp: 1548750060000
 const tasks = []; // array of async tasks
 
 let completed = 0;
-tasks.forEach(function(task) {
-    task(function() {
-        // async callback: will execute when async task completes
-        
-        // if all tasks are completed, call finish()
-        if(++completed === tasks.length) {
-            finish();
-        }
-    });
+tasks.forEach(function (task) {
+  task(function () {
+    // async callback: will execute when async task completes
+
+    // if all tasks are completed, call finish()
+    if (++completed === tasks.length) {
+      finish();
+    }
+  });
 });
 
 function finish() {
-    // all tasks completed
+  // all tasks completed
 }
 ```
-
-<PostDate />
-<PageTags />

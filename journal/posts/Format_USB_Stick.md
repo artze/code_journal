@@ -45,6 +45,3 @@ sudo mkfs.vfat /dev/sdXn -n VOLUME_NAME
 ```
 
 This last step will format the partition by creating a FAT filesystem. The `-n` option allows you to set the volume label and is optional.
-
-<PostDate />
-<PageTags />

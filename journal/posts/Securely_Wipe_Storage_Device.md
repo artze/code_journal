@@ -74,6 +74,3 @@ The following was observed when using the commands above:
 - Tried both approahces to wipe a 1TB HDD with a _faulty_ SATA to USB convertor. A faulty convertor can lead to the following errors:
   - with `shred`: `error writing at offset xxx: Input/output error`.
   - with `dd`: The process freezes after a while, i.e. the byte number does not progress for long periods of time. To stop and exit `dd`, we need to run `kill -9 <pid>`.
-
-<PostDate />
-<PageTags />

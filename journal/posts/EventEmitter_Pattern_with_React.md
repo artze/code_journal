@@ -37,7 +37,7 @@ class EventEmitter {
   }
 }
 
-export { EventEmitter }
+export { EventEmitter };
 ```
 
 Say we have a parent component that emits events, and a child component that listens to this event and performs an action
@@ -90,6 +90,3 @@ class ChildComponent extends Component {
   }
 }
 ```
-
-<PostDate />
-<PageTags />

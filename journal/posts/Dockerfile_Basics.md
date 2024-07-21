@@ -13,11 +13,11 @@ A docker image is required to create this container, and a Dockerfile is what yo
 
 A Dockerfile generally:
 
-* Specifies what the runtime environment your application needs (e.g. Nodejs). A common practice is to pull an existing docker ‘base image’.
-* Allows you to run shell commands
-* Specifies files (source code) to copy into your container for your application to run
-* Specifies which port your application is publishing to
-* Includes the command required to run your app
+- Specifies what the runtime environment your application needs (e.g. Nodejs). A common practice is to pull an existing docker ‘base image’.
+- Allows you to run shell commands
+- Specifies files (source code) to copy into your container for your application to run
+- Specifies which port your application is publishing to
+- Includes the command required to run your app
 
 ```sh
 FROM node:8-alpine
@@ -42,6 +42,3 @@ CMD ["node", "server"]
 ```
 
 With the file ready, you could create a Docker image (in your directory with Dockerfile) `docker build -t <insert img name>` .
-
-<PostDate />
-<PageTags />

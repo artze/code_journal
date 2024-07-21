@@ -8,10 +8,13 @@ timestamp: 1619941556950
 # Shell Globbing
 
 See more:
+
 - <https://linux-training.be/funhtml/ch17.html>
 
-## Asterisk *
+## Asterisk \*
+
 A wildcard that can represent 0 or more characters.
+
 ```sh
 [paul@RHELv4u3 gen]$ ls
 file1  file2  file3  File4  File55  FileA  fileab  Fileab  FileAB  fileabc File
@@ -28,7 +31,9 @@ File55
 ```
 
 ## Question Mark ?
+
 A wildcard that represents only 1 character.
+
 ```sh
 [paul@RHELv4u3 gen]$ ls
 file1  file2  file3  File4  File55  FileA  fileab  Fileab  FileAB  fileabc
@@ -43,9 +48,11 @@ File55  Fileab  FileAB
 ```
 
 ## Square Brackets []
+
 Match any one character listed within `[]`. Square brackets can be used successively to match any combination of candidates.
+
 ```sh
-[paul@RHELv4u3 gen]$ ls 
+[paul@RHELv4u3 gen]$ ls
 file1  file2  file3  File4  File55  FileA  fileab  Fileab  FileAB  fileabc
 [paul@RHELv4u3 gen]$ ls File[5A]
 FileA
@@ -61,9 +68,10 @@ ls: File[a5][5b][abcdefghijklm]: No such file or directory
 fileabc
 ```
 
-You can *exclude* candidates by prefixing with `!`
+You can _exclude_ candidates by prefixing with `!`
+
 ```sh
-[paul@RHELv4u3 gen]$ ls 
+[paul@RHELv4u3 gen]$ ls
 file1  file2  file3  File4  File55  FileA  fileab  Fileab  FileAB  fileabc
 [paul@RHELv4u3 gen]$ ls file[a5][!Z]
 fileab
@@ -74,6 +82,7 @@ fileab
 ```
 
 Ranges are understood as well
+
 ```sh
 [paul@RHELv4u3 gen]$ ls
 file1  file3  File55  fileab  FileAB   fileabc
@@ -85,6 +94,3 @@ file1  file2  file3
 [paul@RHELv4u3 gen]$ ls file[a-z][a-z][0-9]*
 fileab2
 ```
-
-<PostDate />
-<PageTags />

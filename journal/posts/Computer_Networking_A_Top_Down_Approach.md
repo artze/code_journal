@@ -260,6 +260,3 @@ How a DNS query for `captainspaghetti.com` would look like:
 
 1. DNS query is made to `.com` TLD DNS server, and the server returns both Type NS and Type A records listed above.
 2. Subsequent DNS query is made to DigitalOcean's DNS Server, which contains the Type A record corresponing to `captainspaghetti.com`. The query resolves here with the IP it is looking for.
-
-<PostDate />
-<PageTags />

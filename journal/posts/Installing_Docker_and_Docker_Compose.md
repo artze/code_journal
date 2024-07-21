@@ -14,6 +14,3 @@ How to install Docker:
 How to install docker-compose:
 
 <https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04>
-
-<PostDate />
-<PageTags />

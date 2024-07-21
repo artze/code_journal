@@ -16,6 +16,3 @@ What are timing attacks?
 Addressing timing attacks in API key validation Nodejs example:
 
 <https://medium.com/nerd-for-tech/checking-api-key-without-shooting-yourself-in-the-foot-javascript-nodejs-f271e47bb428>
-
-<PostDate />
-<PageTags />

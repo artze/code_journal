@@ -10,6 +10,7 @@ timestamp: 1619395361533
 Errors or failures in shell are represented by a non-zero exit code between `1` and `255`. In most cases, exit code `1` can be used.
 
 Resources:
+
 - <https://dev.to/banks/stop-ignoring-errors-in-bash-3co5>
 
 ## Default Error Behaviors
@@ -29,7 +30,7 @@ main
 # def: command not found
 ```
 
-To be specific, it will not terminate when encountered with a non-zero exit code from a *sub-command*. It will still terminate when a non-zero exit code is emitted in the main flow:
+To be specific, it will not terminate when encountered with a non-zero exit code from a _sub-command_. It will still terminate when a non-zero exit code is emitted in the main flow:
 
 ```bash
 main () {
@@ -72,7 +73,7 @@ set -euo pipefail
 
 ### `set -u`
 
-This causes the shell script to treat unset variables as an error *and* exit immediately. See cases below:
+This causes the shell script to treat unset variables as an error _and_ exit immediately. See cases below:
 
 ```bash
 main () {
@@ -83,7 +84,7 @@ main () {
 main
 
 # Output
-# 
+#
 # end of main
 ```
 
@@ -98,7 +99,7 @@ main () {
 main
 
 # Output
-# line x: foo: unbound variable 
+# line x: foo: unbound variable
 ```
 
 ### `set -o pipefail`
@@ -111,10 +112,7 @@ cat example.txt | grep sometext | sort
 
 By default, the exit status of the entire pipeline will just be that of the last command, sort. This can succeed even if example.txt does not exist and an earlier command like cat fails. pipefail changes this behaviour so that the pipeline is marked as failed if any of the commands fail. (Subsequent commands in the pipeline will still be executed. If multiple fail, the exit status of the last failing command will be used.)
 
-
 ## Error Handling
+
 <https://stackoverflow.com/questions/64786/error-handling-in-bash>
 <https://stackoverflow.com/questions/30078281/raise-error-in-a-bash-script/50265513#50265513>
-
-<PostDate />
-<PageTags />

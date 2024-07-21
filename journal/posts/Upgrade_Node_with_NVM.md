@@ -26,6 +26,3 @@ After that, simply uninstall the old version by
 ```sh
 nvm uninstall OLD_VERSION
 ```
-
-<PostDate />
-<PageTags />

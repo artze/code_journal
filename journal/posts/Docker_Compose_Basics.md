@@ -63,6 +63,3 @@ When we run `docker-componse down`, `docker-compose` will:
 At this point, the docker image _previously_ built is still there. If we run `docker-compose up` again, the _existing_ image is used to create and start new container(s).
 
 If we want to force `docker-compose` to rebuild a new image (instead of using the existing one), we can do this by `docker-compose up --build`.
-
-<PostDate />
-<PageTags />

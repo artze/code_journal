@@ -84,6 +84,3 @@ function upsertUser({ first_name, last_name, email }) {
 ```
 
 Our `upsertUser` function essentially prepares the INSERT and UPDATE parts of the `INSERT ... ON DUPLICATE KEY UPDATE` statement.
-
-<PostDate />
-<PageTags />

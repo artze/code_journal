@@ -8,6 +8,3 @@ timestamp: 1554782505000
 ## CORS Explained
 
 <https://www.codecademy.com/articles/what-is-cors>
-
-<PostDate />
-<PageTags />

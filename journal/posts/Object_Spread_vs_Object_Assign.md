@@ -144,7 +144,7 @@ const objectAssign = Object.assign(
       console.log(val);
     },
   },
-  { foo: 1 }
+  { foo: 1 },
 );
 // Logs "1"; objectAssign.foo is still the original setter
 
@@ -160,6 +160,3 @@ const spread = {
 ## References
 
 - [MDN: Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals)
-
-<PostDate />
-<PageTags />
