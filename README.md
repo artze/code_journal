@@ -1,6 +1,6 @@
 # code_journal
 
-A code journal made with `vitepress`.
+A code journal made with [VitePress](https://vitepress.dev/).
 
 ## TODO
 
