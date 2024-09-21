@@ -1,0 +1,42 @@
+#!/bin/bash
+set -e
+
+. ~/.config/do-devops-config
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm use 22.3.0
+
+if [[ -d "$WORKTREES_BASE_PATH/code_journal" ]]; then
+  echo -n "Removing worktree dir $WORKTREES_BASE_PATH/code_journal for git clone..."
+  rm -r "$WORKTREES_BASE_PATH/code_journal"
+  echo "done"
+fi
+
+echo -n "git cloning to worktree..."
+mkdir -p "$WORKTREE_BASE_PATH/code_journal"
+git clone --depth 1 "$REPOS_BASE_PATH/code_journal.git" "$WORKTREE_BASE_PATH/code_journal"
+echo "done"
+
+cd "$WORKTREES_BASE_PATH/code_journal"
+
+echo -n "npm install..."
+npm install
+echo "done"
+
+echo -n "npm run build..."
+npm run build
+echo "done"
+
+if [[ -d "$SERVE_BASE_PATH/code_journal" ]]; then
+  echo -n "Removing serve dir..."
+  rm -rf "$SERVE_BASE_PATH/code_journal"
+  echo "done"
+fi
+
+echo -n "Add serve files..."
+mkdir -p "$SERVE_BASE_PATH/code_journal"
+cp -a "$WORKTREES_BASE_PATH/code_journal/journal/.vitepress/dist/." "$SERVE_BASE_PATH/code_journal/"
+echo "done"
+
+echo "Task complete"
