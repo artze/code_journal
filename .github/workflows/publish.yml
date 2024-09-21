@@ -28,4 +28,4 @@ jobs:
             StrictHostKeyChecking accept-new
           END
           git remote add live $REMOTE
-          git push live master
+          git push live master --quiet
