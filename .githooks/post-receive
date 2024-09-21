@@ -15,7 +15,7 @@ fi
 
 echo -n "git cloning to worktree..."
 mkdir -p "$WORKTREES_BASE_PATH/code_journal"
-git clone --depth 1 "$REPOS_BASE_PATH/code_journal.git" "$WORKTREES_BASE_PATH/code_journal"
+git clone --quiet --depth 1 "$REPOS_BASE_PATH/code_journal.git" "$WORKTREES_BASE_PATH/code_journal"
 echo "done"
 
 cd "$WORKTREES_BASE_PATH/code_journal"
