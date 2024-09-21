@@ -8,7 +8,7 @@ export NVM_DIR="$HOME/.nvm"
 nvm use 22.3.0
 
 if [[ -d "$WORKTREES_BASE_PATH/code_journal" ]]; then
-  echo -n "Removing worktree dir $WORKTREES_BASE_PATH/code_journal for git clone..."
+  echo -n "Removing worktree dir for git clone..."
   rm -r "$WORKTREES_BASE_PATH/code_journal"
   echo "done"
 fi
